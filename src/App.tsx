@@ -1519,7 +1519,7 @@ export default function App() {
             </div>
             <div className="review-card">
               <div className="review-stars">★★★★☆</div>
-              <p className="review-text">"Got the Kanjivaram silk for my daughter's wedding — every guest was complimenting me. The colours are so rich and vibrant. Highly recommended!"</p>
+              <p className="review-text">"Got the Kanjivaram silk for my daughter's wedding - every guest was complimenting me. The colours are so rich and vibrant. Highly recommended!"</p>
               <div className="reviewer-name">Sunita Verma</div>
               <div className="reviewer-city">Mumbai</div>
             </div>
