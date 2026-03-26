@@ -1103,6 +1103,25 @@ export default function App() {
           position: relative;
         }
 
+        .hero-logo-container {
+          position: relative;
+          z-index: 10;
+          width: 320px;
+          height: 320px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-logo-large {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          mix-blend-mode: multiply;
+          filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+        }
+
         @keyframes float {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-15px); }
