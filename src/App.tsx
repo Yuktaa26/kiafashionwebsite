@@ -19,11 +19,15 @@ export default function App() {
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html, body {
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+
         body {
           font-family: 'Jost', sans-serif;
           background: var(--warm-white);
           color: var(--dark);
-          overflow-x: hidden;
         }
 
         /* ANNOUNCEMENT BAR */
@@ -1140,7 +1144,7 @@ export default function App() {
           <a className="logo-area" href="#">
             <img 
               className="logo-img" 
-              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
+              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
               alt="Kia Fashion Logo" 
             />
             <div className="logo-text">
@@ -1183,7 +1187,7 @@ export default function App() {
             <div className="hero-ornament"></div>
             <img 
               className="hero-logo-large" 
-              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
+              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
               alt="Kia Fashion" 
             />
           </div>
@@ -1580,7 +1584,7 @@ export default function App() {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="brand-logo">
-                <img src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
+                <img src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
                 <span>Kia Fashion</span>
               </div>
               <p>Celebrating Indian craftsmanship through exquisite sarees and women's clothing. Curated by Renu Bhatia with love.</p>
