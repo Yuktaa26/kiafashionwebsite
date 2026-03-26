@@ -112,6 +112,7 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
               className="hero-logo-large" 
               src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
               alt="Kia Fashion" 
+              loading="eager"
             />
           </div>
         </div>
@@ -459,16 +460,15 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
             <h2>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>Kia Fashion?</em></h2>
             <p>Founded by Renu Bhatia with a deep love for Indian textiles, Kia Fashion brings you handpicked, authentic women's clothing from the finest weavers and artisans across India. Every piece tells a story.</p>
             <div className="owner-badge">
-              <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0 }}>
+              <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0, position: 'relative' }}>
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, var(--crimson), var(--rose))', color: 'white', zIndex: 1 }}>R</div>
                 <img 
                   src="/owner.jpg" 
                   alt="Renu Bhatia" 
                   loading="lazy"
-                  decoding="async"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} 
                   onError={(e) => { 
                     e.currentTarget.style.display = 'none'; 
-                    e.currentTarget.parentElement!.innerText = 'R'; 
                   }} 
                 />
               </div>
@@ -551,13 +551,9 @@ export default function App() {
 
   return (
     <div style={{ overflowX: 'hidden', width: '100%', position: 'relative', maxWidth: '100vw' }}>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
-        rel="stylesheet"
-      />
       <style dangerouslySetInnerHTML={{ __html: `
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
         :root {
           --crimson: #8B2E3A;
           --rose: #B85C6E;
