@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // --- SUB-COMPONENTS FOR ROUTING ---
 
-function CollectionPage({ title }) {
+function CollectionPage({ title }: { title: string }) {
   return (
     <div className="page-container" style={{ minHeight: '60vh', background: 'var(--cream)', paddingBottom: '70px' }}>
       <div className="page-header">
@@ -75,7 +75,7 @@ function CollectionPage({ title }) {
   );
 }
 
-function InfoPage({ title, content }) {
+function InfoPage({ title, content }: { title: string, content: string }) {
   return (
     <div className="page-container" style={{ minHeight: '60vh', background: 'var(--cream)' }}>
       <div className="page-header">
@@ -90,7 +90,7 @@ function InfoPage({ title, content }) {
   );
 }
 
-function Home({ navigate }) {
+function Home({ navigate }: { navigate: (page: string) => void }) {
   return (
     <>
       {/* HERO */}
@@ -499,7 +499,7 @@ function Home({ navigate }) {
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
 
-  const navigate = (page) => {
+  const navigate = (page: string) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
