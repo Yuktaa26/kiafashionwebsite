@@ -1905,7 +1905,7 @@ export default function App() {
               <p>
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Owner:</strong> Renu Bhatia<br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>WhatsApp:</strong><br />
-                <a href="#" style={{ color: 'var(--gold)' }}>+91 XXXXX XXXXX</a><br /><br />
+                <a href="#" style={{ color: 'var(--gold)' }}>+91 8287730510</a><br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Hours:</strong><br />
                 Mon to Sat, 10AM to 7PM<br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Email:</strong><br />
