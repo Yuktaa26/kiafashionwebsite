@@ -110,7 +110,7 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
             <div className="hero-ornament"></div>
             <img 
               className="hero-logo-large" 
-              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
+              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
               alt="Kia Fashion" 
             />
           </div>
@@ -459,7 +459,17 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
             <h2>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>Kia Fashion?</em></h2>
             <p>Founded by Renu Bhatia with a deep love for Indian textiles, Kia Fashion brings you handpicked, authentic women's clothing from the finest weavers and artisans across India. Every piece tells a story.</p>
             <div className="owner-badge">
-              <div className="owner-avatar">R</div>
+              <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0 }}>
+                <img 
+                  src="/owner.jpg" 
+                  alt="Renu Bhatia" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  onError={(e) => { 
+                    e.currentTarget.style.display = 'none'; 
+                    e.currentTarget.parentElement!.innerText = 'R'; 
+                  }} 
+                />
+              </div>
               <div className="owner-info">
                 <div className="name">Renu Bhatia</div>
                 <div className="title">Founder & Curator, Kia Fashion</div>
@@ -556,6 +566,15 @@ export default function App() {
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Vite global overrides to remove the gap */
+        #root {
+          max-width: none !important;
+          width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          text-align: left !important;
+        }
 
         body {
           font-family: 'Jost', sans-serif;
@@ -1702,7 +1721,7 @@ export default function App() {
           <a className="logo-area" onClick={(e) => { e.preventDefault(); navigate('home'); }}>
             <img 
               className="logo-img" 
-              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
+              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
               alt="Kia Fashion Logo" 
             />
             <div className="logo-text">
@@ -1749,7 +1768,7 @@ export default function App() {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="brand-logo" style={{ cursor: 'pointer' }} onClick={() => navigate('home')}>
-                <img src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
+                <img src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
                 <span>Kia Fashion</span>
               </div>
               <p>Celebrating Indian craftsmanship through exquisite sarees and women's clothing. Curated by Renu Bhatia with love.</p>
