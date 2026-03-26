@@ -1,4 +1,542 @@
+import React, { useState } from 'react';
+
+// --- SUB-COMPONENTS FOR ROUTING ---
+
+function CollectionPage({ title }) {
+  return (
+    <div className="page-container" style={{ minHeight: '60vh', background: 'var(--cream)', paddingBottom: '70px' }}>
+      <div className="page-header">
+        <h1>{title}</h1>
+        <p>Discover our exclusive, handpicked range of {title.toLowerCase()}.</p>
+      </div>
+      
+      <section className="featured-section" style={{ background: 'transparent', paddingTop: '60px' }}>
+        <div className="products-grid">
+          {/* Reusing existing product cards as placeholders for the collection */}
+          <div className="product-card">
+            <div className="product-img">
+              <div className="product-img-bg p1">🥻</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Signature {title} 1</h4>
+              <p className="fabric">Premium Weave</p>
+              <div className="product-price">
+                <span className="price-now">₹2,499</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+          <div className="product-card">
+            <div className="product-img">
+              <div className="product-img-bg p2">🌸</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Signature {title} 2</h4>
+              <p className="fabric">Handcrafted</p>
+              <div className="product-price">
+                <span className="price-now">₹3,299</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+          <div className="product-card">
+            <div className="product-img">
+              <div className="product-img-bg p3">🌼</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Signature {title} 3</h4>
+              <p className="fabric">Festive Edition</p>
+              <div className="product-price">
+                <span className="price-now">₹4,999</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+          <div className="product-card">
+            <div className="product-img">
+              <div className="product-img-bg p4">💜</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Signature {title} 4</h4>
+              <p className="fabric">Classic Elegance</p>
+              <div className="product-price">
+                <span className="price-now">₹1,899</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function InfoPage({ title, content }) {
+  return (
+    <div className="page-container" style={{ minHeight: '60vh', background: 'var(--cream)' }}>
+      <div className="page-header">
+        <h1>{title}</h1>
+      </div>
+      <div className="page-content" style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 30px', fontSize: '17px', lineHeight: '1.9', color: 'var(--dark)' }}>
+        <p>{content}</p>
+        <br/>
+        <p style={{ color: 'var(--text-muted)' }}>If you need further assistance regarding this topic, please don't hesitate to contact our support team via WhatsApp or Email. We are always here to help you experience the best of Kia Fashion.</p>
+      </div>
+    </div>
+  );
+}
+
+function Home({ navigate }) {
+  return (
+    <>
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-pattern"></div>
+        <div className="hero-content">
+          <div className="hero-text">
+            <p className="eyebrow">✦ New Collection 2025</p>
+            <h1>Drape Yourself in <em>Timeless Elegance</em></h1>
+            <p>Curated by Renu Bhatia, celebrating the grace of Indian womanhood through the finest sarees, suits, and traditional wear.</p>
+            <div className="hero-btns">
+              <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Shop Sarees</a>
+              <a href="#" className="btn-outline" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>View All Collections</a>
+            </div>
+          </div>
+          <div className="hero-visual">
+            <div className="hero-ornament"></div>
+            <img 
+              className="hero-logo-large" 
+              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
+              alt="Kia Fashion" 
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* STATS STRIP */}
+      <div className="stats-strip">
+        <div className="stats-inner">
+          <div className="stat-item">
+            <span className="stat-number">5000+</span>
+            <span className="stat-label">Happy Customers</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">800+</span>
+            <span className="stat-label">Styles Available</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">15+</span>
+            <span className="stat-label">Fabric Types</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">4.8★</span>
+            <span className="stat-label">Customer Rating</span>
+          </div>
+        </div>
+      </div>
+
+      {/* CATEGORIES */}
+      <section>
+        <div className="section-header" style={{ paddingTop: '60px' }}>
+          <span className="eyebrow">✦ Browse by Category</span>
+          <h2>Top Categories</h2>
+          <div className="section-divider">
+            <div className="divider-line"></div>
+            <div className="divider-diamond"></div>
+            <div className="divider-line"></div>
+          </div>
+        </div>
+        <div className="categories">
+          <div className="categories-grid">
+            <div className="cat-card cat-card-1" onClick={() => navigate('silk-sarees')}>
+              <div className="cat-bg">
+                <div className="cat-pattern"></div>
+                <span className="cat-icon">🥻</span>
+              </div>
+              <div className="cat-badge">Trending</div>
+              <div className="cat-label">
+                <h3>Sarees</h3>
+                <p>200+ styles</p>
+              </div>
+            </div>
+            <div className="cat-card cat-card-2" onClick={() => navigate('party-wear')}>
+              <div className="cat-bg">
+                <div className="cat-pattern"></div>
+                <span className="cat-icon">👘</span>
+              </div>
+              <div className="cat-label">
+                <h3>Salwar Suits</h3>
+                <p>Everyday elegance</p>
+              </div>
+            </div>
+            <div className="cat-card cat-card-3" onClick={() => navigate('bridal-collection')}>
+              <div className="cat-bg">
+                <div className="cat-pattern"></div>
+                <span className="cat-icon">🪷</span>
+              </div>
+              <div className="cat-badge">New</div>
+              <div className="cat-label">
+                <h3>Lehengas</h3>
+                <p>Festive & bridal</p>
+              </div>
+            </div>
+            <div className="cat-card cat-card-4" onClick={() => navigate('cotton-sarees')}>
+              <div className="cat-bg">
+                <div className="cat-pattern"></div>
+                <span className="cat-icon">✨</span>
+              </div>
+              <div className="cat-label">
+                <h3>Kurtis</h3>
+                <p>Modern Indian wear</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FEATURED PRODUCTS */}
+      <section className="featured-section">
+        <div className="section-header">
+          <span className="eyebrow">✦ Handpicked for You</span>
+          <h2>New Arrivals</h2>
+          <div className="section-divider">
+            <div className="divider-line"></div>
+            <div className="divider-diamond"></div>
+            <div className="divider-line"></div>
+          </div>
+        </div>
+
+        <div className="products-grid">
+          <div className="product-card" onClick={() => navigate('banarasi-sarees')}>
+            <div className="product-img">
+              <div className="product-img-bg p1">🥻</div>
+              <div className="product-badge">New</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Crimson Banarasi Silk Saree</h4>
+              <p className="fabric">Pure Silk · Woven</p>
+              <div className="product-price">
+                <span className="price-now">₹2,499</span>
+                <span className="price-old">₹5,999</span>
+                <span className="price-save">58% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+
+          <div className="product-card" onClick={() => navigate('party-wear')}>
+            <div className="product-img">
+              <div className="product-img-bg p2">🌸</div>
+              <div className="product-badge">Bestseller</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Powder Blue Chiffon Saree</h4>
+              <p className="fabric">Chiffon · Printed</p>
+              <div className="product-price">
+                <span className="price-now">₹1,299</span>
+                <span className="price-old">₹3,200</span>
+                <span className="price-save">59% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+
+          <div className="product-card" onClick={() => navigate('kanjivaram-sarees')}>
+            <div className="product-img">
+              <div className="product-img-bg p3">🌼</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Golden Kanjivaram Silk Saree</h4>
+              <p className="fabric">Kanjivaram · Embroidered</p>
+              <div className="product-price">
+                <span className="price-now">₹3,999</span>
+                <span className="price-old">₹8,500</span>
+                <span className="price-save">53% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+
+          <div className="product-card" onClick={() => navigate('party-wear')}>
+            <div className="product-img">
+              <div className="product-img-bg p4">💜</div>
+              <div className="product-badge">Sale</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Violet Georgette Party Saree</h4>
+              <p className="fabric">Georgette · Sequin</p>
+              <div className="product-price">
+                <span className="price-now">₹1,799</span>
+                <span className="price-old">₹4,200</span>
+                <span className="price-save">57% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BANNER */}
+      <div className="banner-strip">
+        <div className="inner">
+          <h2>The <em>Heritage Saree</em> Collection</h2>
+          <p>Paithani · Banarasi · Kanjivaram · Bandhani · Kalamkari · Ikkat</p>
+          <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Explore Heritage Weaves</a>
+        </div>
+      </div>
+
+      {/* BESTSELLERS */}
+      <section className="featured-section">
+        <div className="section-header">
+          <span className="eyebrow">✦ Most Loved</span>
+          <h2>Bestsellers</h2>
+          <div className="section-divider">
+            <div className="divider-line"></div>
+            <div className="divider-diamond"></div>
+            <div className="divider-line"></div>
+          </div>
+        </div>
+
+        <div className="products-grid">
+          <div className="product-card" onClick={() => navigate('cotton-sarees')}>
+            <div className="product-img">
+              <div className="product-img-bg p5">🍃</div>
+              <div className="product-badge">Top Rated</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Emerald Green Ikkat Saree</h4>
+              <p className="fabric">Cotton Silk · Handwoven</p>
+              <div className="product-price">
+                <span className="price-now">₹999</span>
+                <span className="price-old">₹2,500</span>
+                <span className="price-save">60% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+
+          <div className="product-card" onClick={() => navigate('bandhani-sarees')}>
+            <div className="product-img">
+              <div className="product-img-bg p6">🔴</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Bridal Red Bandhani Saree</h4>
+              <p className="fabric">Georgette · Bandhani</p>
+              <div className="product-price">
+                <span className="price-now">₹2,199</span>
+                <span className="price-old">₹5,500</span>
+                <span className="price-save">60% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+
+          <div className="product-card" onClick={() => navigate('silk-sarees')}>
+            <div className="product-img">
+              <div className="product-img-bg p7">🌺</div>
+              <div className="product-badge">Festive Pick</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Rani Pink Paithani Saree</h4>
+              <p className="fabric">Silk · Traditional Weave</p>
+              <div className="product-price">
+                <span className="price-now">₹3,299</span>
+                <span className="price-old">₹7,200</span>
+                <span className="price-save">54% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+
+          <div className="product-card" onClick={() => navigate('cotton-sarees')}>
+            <div className="product-img">
+              <div className="product-img-bg p8">🌿</div>
+              <div className="product-wishlist">♡</div>
+            </div>
+            <div className="product-info">
+              <h4>Mint Kalamkari Cotton Saree</h4>
+              <p className="fabric">Cotton · Kalamkari Print</p>
+              <div className="product-price">
+                <span className="price-now">₹799</span>
+                <span className="price-old">₹1,800</span>
+                <span className="price-save">56% off</span>
+              </div>
+              <button className="add-to-cart-btn">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COLLECTIONS DUO */}
+      <section>
+        <div className="section-header">
+          <span className="eyebrow">✦ Explore</span>
+          <h2>Special Collections</h2>
+          <div className="section-divider">
+            <div className="divider-line"></div>
+            <div className="divider-diamond"></div>
+            <div className="divider-line"></div>
+          </div>
+        </div>
+        <div className="collections-section">
+          <div className="collections-duo">
+            <div className="coll-card" onClick={() => navigate('bridal-collection')}>
+              <div className="coll-bg coll-bg-1">
+                <div className="coll-pattern"></div>
+                🥻
+              </div>
+              <div className="coll-overlay">
+                <span className="eyebrow">✦ Bridal Season 2025</span>
+                <h3>Wedding & Bridal Sarees</h3>
+                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Shop Bridal →</a>
+              </div>
+            </div>
+            <div className="coll-card" onClick={() => navigate('party-wear')}>
+              <div className="coll-bg coll-bg-2">
+                <div className="coll-pattern"></div>
+                ✨
+              </div>
+              <div className="coll-overlay">
+                <span className="eyebrow">✦ Everyday Chic</span>
+                <h3>Office & Daily Wear Sarees</h3>
+                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Shop Collection →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="testimonials">
+        <div className="testimonials-inner">
+          <div className="section-header" style={{ paddingTop: 0 }}>
+            <span className="eyebrow">✦ Customer Love</span>
+            <h2>What Our Customers Say</h2>
+            <div className="section-divider">
+              <div className="divider-line"></div>
+              <div className="divider-diamond"></div>
+              <div className="divider-line"></div>
+            </div>
+          </div>
+          <div className="reviews-grid">
+            <div className="review-card">
+              <div className="review-stars">★★★★★</div>
+              <p className="review-text">"The Banarasi saree I ordered was absolutely stunning. The fabric quality is exceptional and it arrived beautifully wrapped. Will definitely order again!"</p>
+              <div className="reviewer-name">Priya Sharma</div>
+              <div className="reviewer-city">New Delhi</div>
+            </div>
+            <div className="review-card">
+              <div className="review-stars">★★★★★</div>
+              <p className="review-text">"Renu ji's collection is unmatched. I've been a customer for 2 years and the sarees are always exactly as shown. Superb craftsmanship!"</p>
+              <div className="reviewer-name">Meena Agarwal</div>
+              <div className="reviewer-city">Jaipur</div>
+            </div>
+            <div className="review-card">
+              <div className="review-stars">★★★★☆</div>
+              <p className="review-text">"Got the Kanjivaram silk for my daughter's wedding, every guest was complimenting me. The colours are so rich and vibrant. Highly recommended!"</p>
+              <div className="reviewer-name">Sunita Verma</div>
+              <div className="reviewer-city">Mumbai</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section>
+        <div className="why-us">
+          <div className="why-us-left">
+            <h2>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>Kia Fashion?</em></h2>
+            <p>Founded by Renu Bhatia with a deep love for Indian textiles, Kia Fashion brings you handpicked, authentic women's clothing from the finest weavers and artisans across India. Every piece tells a story.</p>
+            <div className="owner-badge">
+              <div className="owner-avatar">R</div>
+              <div className="owner-info">
+                <div className="name">Renu Bhatia</div>
+                <div className="title">Founder & Curator, Kia Fashion</div>
+              </div>
+            </div>
+          </div>
+          <div className="why-us-right">
+            <div className="feature-item">
+              <span className="fi-icon">🧵</span>
+              <h4>Authentic Fabrics</h4>
+              <p>Sourced directly from weavers and artisans</p>
+            </div>
+            <div className="feature-item">
+              <span className="fi-icon">🚚</span>
+              <h4>Fast Delivery</h4>
+              <p>Pan-India shipping in 3 to 5 business days</p>
+            </div>
+            <div className="feature-item">
+              <span className="fi-icon">↩️</span>
+              <h4>Easy Returns</h4>
+              <p>7-day hassle-free return policy</p>
+            </div>
+            <div className="feature-item">
+              <span className="fi-icon">💬</span>
+              <h4>Personal Styling</h4>
+              <p>WhatsApp us for personal shopping help</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+// --- MAIN APP COMPONENT ---
+
 export default function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const navigate = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const renderPage = () => {
+    switch(currentPage) {
+      case 'home': return <Home navigate={navigate} />;
+      
+      // Collection Pages
+      case 'silk-sarees': return <CollectionPage title="Silk Sarees" />;
+      case 'banarasi-sarees': return <CollectionPage title="Banarasi Sarees" />;
+      case 'kanjivaram-sarees': return <CollectionPage title="Kanjivaram Sarees" />;
+      case 'bandhani-sarees': return <CollectionPage title="Bandhani Sarees" />;
+      case 'cotton-sarees': return <CollectionPage title="Cotton Sarees" />;
+      case 'party-wear': return <CollectionPage title="Party Wear" />;
+      case 'bridal-collection': return <CollectionPage title="Bridal Collection" />;
+
+      // Information Pages
+      case 'about-us': 
+        return <InfoPage title="About Us" content="Kia Fashion was founded by Renu Bhatia with a deep love for Indian textiles and traditional weaves. Our mission is to bring you handpicked, authentic women's clothing from the finest weavers and artisans across India. We believe every piece of clothing tells a story of heritage, culture, and craftsmanship." />;
+      case 'contact-us': 
+        return <InfoPage title="Contact Us" content="We would love to hear from you! For any inquiries, feedback, or personal styling assistance, please reach out to us on WhatsApp at +91 XXXXX XXXXX or email us at hello@kiafashion.in. Our operating hours are Monday to Saturday, 10:00 AM to 7:00 PM." />;
+      case 'faqs': 
+        return <InfoPage title="Frequently Asked Questions" content="We strive to provide the best quality fabrics. If you have questions about sizing, please refer to the size chart on the individual product pages. For care instructions, we recommend dry cleaning for all silk and heavy embroidered items to maintain their luster and longevity." />;
+      case 'shipping-policy': 
+        return <InfoPage title="Shipping Policy" content="We are thrilled to offer Free Shipping on all orders above ₹999 within India. Orders are typically processed within 24 hours and pan-India delivery takes 3 to 5 business days. Please note that international shipping is currently unavailable, but we are working on bringing Kia Fashion to the world soon!" />;
+      case 'return-policy': 
+        return <InfoPage title="Return & Exchange Policy" content="Your satisfaction is our priority. We offer a 7-day hassle-free return and exchange policy from the date of delivery. Items must be unworn, unwashed, and have all original tags and packaging intact. Customized or altered items cannot be returned." />;
+      case 'privacy-policy': 
+        return <InfoPage title="Privacy Policy" content="Your privacy is critically important to us. We secure your data using industry-standard encryption and never share your personal details with third parties without your explicit consent. Information collected is used solely to process your orders and improve your shopping experience." />;
+      case 'track-order': 
+        return <InfoPage title="Track Your Order" content="To track your recent shipment, please check your email for the tracking link provided by our courier partners upon dispatch. If you cannot find the email, contact our support team with your Order ID and we will provide you with live tracking details immediately." />;
+
+      default: return <Home navigate={navigate} />;
+    }
+  };
+
   return (
     <div style={{ overflowX: 'hidden', width: '100%', position: 'relative', maxWidth: '100vw' }}>
       <link
@@ -25,6 +563,28 @@ export default function App() {
           color: var(--dark);
           margin: 0;
           padding: 0;
+        }
+
+        /* NEW PAGE STYLES */
+        .page-header {
+          background: linear-gradient(135deg, var(--dark) 0%, #4A1A22 100%);
+          padding: 80px 30px;
+          text-align: center;
+          color: white;
+          border-bottom: 3px solid var(--gold);
+        }
+        .page-header h1 {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: clamp(36px, 4vw, 52px);
+          font-weight: 400;
+          margin-bottom: 12px;
+          letter-spacing: 1px;
+        }
+        .page-header p {
+          font-size: 15px;
+          color: rgba(255,255,255,0.7);
+          letter-spacing: 1px;
+          text-transform: uppercase;
         }
 
         /* ANNOUNCEMENT BAR */
@@ -65,6 +625,7 @@ export default function App() {
           align-items: center;
           gap: 14px;
           text-decoration: none;
+          cursor: pointer;
         }
 
         .logo-img {
@@ -1083,6 +1644,7 @@ export default function App() {
           font-size: 13px;
           transition: color 0.3s;
           letter-spacing: 0.5px;
+          cursor: pointer;
         }
 
         .footer-col a:hover { color: var(--gold); }
@@ -1137,7 +1699,7 @@ export default function App() {
       {/* HEADER */}
       <header>
         <div className="header-inner">
-          <a className="logo-area" href="#">
+          <a className="logo-area" onClick={(e) => { e.preventDefault(); navigate('home'); }}>
             <img 
               className="logo-img" 
               src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
@@ -1150,12 +1712,12 @@ export default function App() {
           </a>
 
           <nav>
-            <a href="#">Sarees</a>
-            <a href="#">Salwar Suits</a>
-            <a href="#">Lehengas</a>
-            <a href="#">Kurtis</a>
-            <a href="#">Collections</a>
-            <a href="#" className="sale">Sale</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Sarees</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Salwar Suits</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Lehengas</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Kurtis</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Collections</a>
+            <a href="#" className="sale" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Sale</a>
           </nav>
 
           <div className="header-icons">
@@ -1166,405 +1728,12 @@ export default function App() {
         </div>
       </header>
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-pattern"></div>
-        <div className="hero-content">
-          <div className="hero-text">
-            <p className="eyebrow">✦ New Collection 2025</p>
-            <h1>Drape Yourself in <em>Timeless Elegance</em></h1>
-            <p>Curated by Renu Bhatia, celebrating the grace of Indian womanhood through the finest sarees, suits, and traditional wear.</p>
-            <div className="hero-btns">
-              <a href="#" className="btn-primary">Shop Sarees</a>
-              <a href="#" className="btn-outline">View All Collections</a>
-            </div>
-          </div>
-          <div className="hero-visual">
-            <div className="hero-ornament"></div>
-            <img 
-              className="hero-logo-large" 
-              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
-              alt="Kia Fashion" 
-            />
-          </div>
-        </div>
-      </section>
+      {/* MAIN CONTENT ROUTER */}
+      <main>
+        {renderPage()}
+      </main>
 
-      {/* STATS STRIP */}
-      <div className="stats-strip">
-        <div className="stats-inner">
-          <div className="stat-item">
-            <span className="stat-number">5000+</span>
-            <span className="stat-label">Happy Customers</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">800+</span>
-            <span className="stat-label">Styles Available</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">15+</span>
-            <span className="stat-label">Fabric Types</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">4.8★</span>
-            <span className="stat-label">Customer Rating</span>
-          </div>
-        </div>
-      </div>
-
-      {/* CATEGORIES */}
-      <section>
-        <div className="section-header" style={{ paddingTop: '60px' }}>
-          <span className="eyebrow">✦ Browse by Category</span>
-          <h2>Top Categories</h2>
-          <div className="section-divider">
-            <div className="divider-line"></div>
-            <div className="divider-diamond"></div>
-            <div className="divider-line"></div>
-          </div>
-        </div>
-        <div className="categories">
-          <div className="categories-grid">
-            <div className="cat-card cat-card-1">
-              <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">🥻</span>
-              </div>
-              <div className="cat-badge">Trending</div>
-              <div className="cat-label">
-                <h3>Sarees</h3>
-                <p>200+ styles</p>
-              </div>
-            </div>
-            <div className="cat-card cat-card-2">
-              <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">👘</span>
-              </div>
-              <div className="cat-label">
-                <h3>Salwar Suits</h3>
-                <p>Everyday elegance</p>
-              </div>
-            </div>
-            <div className="cat-card cat-card-3">
-              <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">🪷</span>
-              </div>
-              <div className="cat-badge">New</div>
-              <div className="cat-label">
-                <h3>Lehengas</h3>
-                <p>Festive & bridal</p>
-              </div>
-            </div>
-            <div className="cat-card cat-card-4">
-              <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">✨</span>
-              </div>
-              <div className="cat-label">
-                <h3>Kurtis</h3>
-                <p>Modern Indian wear</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FEATURED PRODUCTS */}
-      <section className="featured-section">
-        <div className="section-header">
-          <span className="eyebrow">✦ Handpicked for You</span>
-          <h2>New Arrivals</h2>
-          <div className="section-divider">
-            <div className="divider-line"></div>
-            <div className="divider-diamond"></div>
-            <div className="divider-line"></div>
-          </div>
-        </div>
-
-        <div className="products-grid">
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p1">🥻</div>
-              <div className="product-badge">New</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Crimson Banarasi Silk Saree</h4>
-              <p className="fabric">Pure Silk · Woven</p>
-              <div className="product-price">
-                <span className="price-now">₹2,499</span>
-                <span className="price-old">₹5,999</span>
-                <span className="price-save">58% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p2">🌸</div>
-              <div className="product-badge">Bestseller</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Powder Blue Chiffon Saree</h4>
-              <p className="fabric">Chiffon · Printed</p>
-              <div className="product-price">
-                <span className="price-now">₹1,299</span>
-                <span className="price-old">₹3,200</span>
-                <span className="price-save">59% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p3">🌼</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Golden Kanjivaram Silk Saree</h4>
-              <p className="fabric">Kanjivaram · Embroidered</p>
-              <div className="product-price">
-                <span className="price-now">₹3,999</span>
-                <span className="price-old">₹8,500</span>
-                <span className="price-save">53% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p4">💜</div>
-              <div className="product-badge">Sale</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Violet Georgette Party Saree</h4>
-              <p className="fabric">Georgette · Sequin</p>
-              <div className="product-price">
-                <span className="price-now">₹1,799</span>
-                <span className="price-old">₹4,200</span>
-                <span className="price-save">57% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* BANNER */}
-      <div className="banner-strip">
-        <div className="inner">
-          <h2>The <em>Heritage Saree</em> Collection</h2>
-          <p>Paithani · Banarasi · Kanjivaram · Bandhani · Kalamkari · Ikkat</p>
-          <a href="#" className="btn-primary">Explore Heritage Weaves</a>
-        </div>
-      </div>
-
-      {/* BESTSELLERS */}
-      <section className="featured-section">
-        <div className="section-header">
-          <span className="eyebrow">✦ Most Loved</span>
-          <h2>Bestsellers</h2>
-          <div className="section-divider">
-            <div className="divider-line"></div>
-            <div className="divider-diamond"></div>
-            <div className="divider-line"></div>
-          </div>
-        </div>
-
-        <div className="products-grid">
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p5">🍃</div>
-              <div className="product-badge">Top Rated</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Emerald Green Ikkat Saree</h4>
-              <p className="fabric">Cotton Silk · Handwoven</p>
-              <div className="product-price">
-                <span className="price-now">₹999</span>
-                <span className="price-old">₹2,500</span>
-                <span className="price-save">60% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p6">🔴</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Bridal Red Bandhani Saree</h4>
-              <p className="fabric">Georgette · Bandhani</p>
-              <div className="product-price">
-                <span className="price-now">₹2,199</span>
-                <span className="price-old">₹5,500</span>
-                <span className="price-save">60% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p7">🌺</div>
-              <div className="product-badge">Festive Pick</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Rani Pink Paithani Saree</h4>
-              <p className="fabric">Silk · Traditional Weave</p>
-              <div className="product-price">
-                <span className="price-now">₹3,299</span>
-                <span className="price-old">₹7,200</span>
-                <span className="price-save">54% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-
-          <div className="product-card">
-            <div className="product-img">
-              <div className="product-img-bg p8">🌿</div>
-              <div className="product-wishlist">♡</div>
-            </div>
-            <div className="product-info">
-              <h4>Mint Kalamkari Cotton Saree</h4>
-              <p className="fabric">Cotton · Kalamkari Print</p>
-              <div className="product-price">
-                <span className="price-now">₹799</span>
-                <span className="price-old">₹1,800</span>
-                <span className="price-save">56% off</span>
-              </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* COLLECTIONS DUO */}
-      <section>
-        <div className="section-header">
-          <span className="eyebrow">✦ Explore</span>
-          <h2>Special Collections</h2>
-          <div className="section-divider">
-            <div className="divider-line"></div>
-            <div className="divider-diamond"></div>
-            <div className="divider-line"></div>
-          </div>
-        </div>
-        <div className="collections-section">
-          <div className="collections-duo">
-            <div className="coll-card">
-              <div className="coll-bg coll-bg-1">
-                <div className="coll-pattern"></div>
-                🥻
-              </div>
-              <div className="coll-overlay">
-                <span className="eyebrow">✦ Bridal Season 2025</span>
-                <h3>Wedding & Bridal Sarees</h3>
-                <a href="#" className="coll-link">Shop Bridal →</a>
-              </div>
-            </div>
-            <div className="coll-card">
-              <div className="coll-bg coll-bg-2">
-                <div className="coll-pattern"></div>
-                ✨
-              </div>
-              <div className="coll-overlay">
-                <span className="eyebrow">✦ Everyday Chic</span>
-                <h3>Office & Daily Wear Sarees</h3>
-                <a href="#" className="coll-link">Shop Collection →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="testimonials">
-        <div className="testimonials-inner">
-          <div className="section-header" style={{ paddingTop: 0 }}>
-            <span className="eyebrow">✦ Customer Love</span>
-            <h2>What Our Customers Say</h2>
-            <div className="section-divider">
-              <div className="divider-line"></div>
-              <div className="divider-diamond"></div>
-              <div className="divider-line"></div>
-            </div>
-          </div>
-          <div className="reviews-grid">
-            <div className="review-card">
-              <div className="review-stars">★★★★★</div>
-              <p className="review-text">"The Banarasi saree I ordered was absolutely stunning. The fabric quality is exceptional and it arrived beautifully wrapped. Will definitely order again!"</p>
-              <div className="reviewer-name">Priya Sharma</div>
-              <div className="reviewer-city">New Delhi</div>
-            </div>
-            <div className="review-card">
-              <div className="review-stars">★★★★★</div>
-              <p className="review-text">"Renu ji's collection is unmatched. I've been a customer for 2 years and the sarees are always exactly as shown. Superb craftsmanship!"</p>
-              <div className="reviewer-name">Meena Agarwal</div>
-              <div className="reviewer-city">Jaipur</div>
-            </div>
-            <div className="review-card">
-              <div className="review-stars">★★★★☆</div>
-              <p className="review-text">"Got the Kanjivaram silk for my daughter's wedding, every guest was complimenting me. The colours are so rich and vibrant. Highly recommended!"</p>
-              <div className="reviewer-name">Sunita Verma</div>
-              <div className="reviewer-city">Mumbai</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHY US */}
-      <section>
-        <div className="why-us">
-          <div className="why-us-left">
-            <h2>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>Kia Fashion?</em></h2>
-            <p>Founded by Renu Bhatia with a deep love for Indian textiles, Kia Fashion brings you handpicked, authentic women's clothing from the finest weavers and artisans across India. Every piece tells a story.</p>
-            <div className="owner-badge">
-              <div className="owner-avatar">R</div>
-              <div className="owner-info">
-                <div className="name">Renu Bhatia</div>
-                <div className="title">Founder & Curator, Kia Fashion</div>
-              </div>
-            </div>
-          </div>
-          <div className="why-us-right">
-            <div className="feature-item">
-              <span className="fi-icon">🧵</span>
-              <h4>Authentic Fabrics</h4>
-              <p>Sourced directly from weavers and artisans</p>
-            </div>
-            <div className="feature-item">
-              <span className="fi-icon">🚚</span>
-              <h4>Fast Delivery</h4>
-              <p>Pan-India shipping in 3 to 5 business days</p>
-            </div>
-            <div className="feature-item">
-              <span className="fi-icon">↩️</span>
-              <h4>Easy Returns</h4>
-              <p>7-day hassle-free return policy</p>
-            </div>
-            <div className="feature-item">
-              <span className="fi-icon">💬</span>
-              <h4>Personal Styling</h4>
-              <p>WhatsApp us for personal shopping help</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* NEWSLETTER */}
+      {/* NEWSLETTER (Always Visible) */}
       <section className="newsletter">
         <h2>Stay in the Loop</h2>
         <p>Get exclusive offers, new arrival alerts & styling tips from Renu straight to your inbox.</p>
@@ -1579,7 +1748,7 @@ export default function App() {
         <div className="footer-inner">
           <div className="footer-grid">
             <div className="footer-brand">
-              <div className="brand-logo">
+              <div className="brand-logo" style={{ cursor: 'pointer' }} onClick={() => navigate('home')}>
                 <img src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
                 <span>Kia Fashion</span>
               </div>
@@ -1595,26 +1764,26 @@ export default function App() {
             <div className="footer-col">
               <h4>Collections</h4>
               <ul>
-                <li><a href="#">Silk Sarees</a></li>
-                <li><a href="#">Banarasi Sarees</a></li>
-                <li><a href="#">Kanjivaram Sarees</a></li>
-                <li><a href="#">Bandhani Sarees</a></li>
-                <li><a href="#">Cotton Sarees</a></li>
-                <li><a href="#">Party Wear</a></li>
-                <li><a href="#">Bridal Collection</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Silk Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Banarasi Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('kanjivaram-sarees'); }}>Kanjivaram Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('bandhani-sarees'); }}>Bandhani Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Cotton Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Party Wear</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Bridal Collection</a></li>
               </ul>
             </div>
 
             <div className="footer-col">
               <h4>Information</h4>
               <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Shipping Policy</a></li>
-                <li><a href="#">Return Policy</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Track Order</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('about-us'); }}>About Us</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('contact-us'); }}>Contact Us</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('faqs'); }}>FAQs</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('shipping-policy'); }}>Shipping Policy</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('return-policy'); }}>Return Policy</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('privacy-policy'); }}>Privacy Policy</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('track-order'); }}>Track Order</a></li>
               </ul>
             </div>
 
@@ -1625,7 +1794,7 @@ export default function App() {
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>WhatsApp:</strong><br />
                 <a href="#" style={{ color: 'var(--gold)' }}>+91 XXXXX XXXXX</a><br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Hours:</strong><br />
-                Mon–Sat, 10AM–7PM<br /><br />
+                Mon-Sat, 10AM-7PM<br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Email:</strong><br />
                 <a href="#" style={{ color: 'var(--gold)' }}>hello@kiafashion.in</a>
               </p>
@@ -1633,7 +1802,7 @@ export default function App() {
           </div>
 
           <div className="footer-bottom">
-            <span>© 2025 Kia Fashion by Renu Bhatia. All rights reserved.</span>
+            <span>© 2026 Kia Fashion by Renu Bhatia. All rights reserved.</span>
             <span>Made with ♡ for the love of Indian textiles</span>
           </div>
         </div>
