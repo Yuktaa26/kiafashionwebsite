@@ -8,6 +8,16 @@ interface Product {
   img: string;
 }
 
+// --- IMAGE ASSETS (High Quality Placeholder Photography from Pinterest) ---
+const imgSaree1 = "https://i.pinimg.com/736x/e4/5a/3d/e45a3dfb2dfecf1b25bc3c846a458b87.jpg";
+const imgSaree2 = "https://i.pinimg.com/736x/40/43/b9/4043b99ce7dcf96a54ef89df4c246e0d.jpg";
+const imgSaree3 = "https://i.pinimg.com/736x/27/ab/72/27ab72939d227c3b55690c223ce6a026.jpg";
+const imgSaree4 = "https://i.pinimg.com/736x/ea/e6/7d/eae67dfc903aa250ff1ba1e3a1239bdb.jpg";
+const imgSaree5 = "https://i.pinimg.com/736x/e9/96/db/e996db9d0ad6cd4e7fc9fffba16acefa.jpg";
+const imgSaree6 = "https://i.pinimg.com/736x/62/2d/79/622d79b381efd5791903c0bffcea49de.jpg";
+const imgSaree7 = "https://i.pinimg.com/1200x/d3/4b/8c/d34b8cc4f63bfbdf764437e651f1172e.jpg";
+const imgSaree8 = "https://i.pinimg.com/736x/e9/96/db/e996db9d0ad6cd4e7fc9fffba16acefa.jpg";
+
 // --- SUB-COMPONENTS FOR ROUTING ---
 
 function CollectionPage({ title, addToCart }: { title: string, addToCart: (p: Product) => void }) {
@@ -23,7 +33,7 @@ function CollectionPage({ title, addToCart }: { title: string, addToCart: (p: Pr
           {/* Reusing existing product cards as placeholders for the collection */}
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p1">🥻</div>
+              <img src={imgSaree1} alt="Signature Saree" className="product-img-asset" />
             </div>
             <div className="product-info">
               <h4>Signature {title} 1</h4>
@@ -31,12 +41,12 @@ function CollectionPage({ title, addToCart }: { title: string, addToCart: (p: Pr
               <div className="product-price">
                 <span className="price-now">₹2,499</span>
               </div>
-              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c1-${title}`, name: `Signature ${title} 1`, price: 2499, img: '🥻' })}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c1-${title}`, name: `Signature ${title} 1`, price: 2499, img: imgSaree1 })}>Add to Cart</button>
             </div>
           </div>
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p2">🌸</div>
+              <img src={imgSaree2} alt="Signature Saree" className="product-img-asset" />
             </div>
             <div className="product-info">
               <h4>Signature {title} 2</h4>
@@ -44,12 +54,12 @@ function CollectionPage({ title, addToCart }: { title: string, addToCart: (p: Pr
               <div className="product-price">
                 <span className="price-now">₹3,299</span>
               </div>
-              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c2-${title}`, name: `Signature ${title} 2`, price: 3299, img: '🌸' })}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c2-${title}`, name: `Signature ${title} 2`, price: 3299, img: imgSaree2 })}>Add to Cart</button>
             </div>
           </div>
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p3">🌼</div>
+              <img src={imgSaree3} alt="Signature Saree" className="product-img-asset" />
             </div>
             <div className="product-info">
               <h4>Signature {title} 3</h4>
@@ -57,12 +67,12 @@ function CollectionPage({ title, addToCart }: { title: string, addToCart: (p: Pr
               <div className="product-price">
                 <span className="price-now">₹4,999</span>
               </div>
-              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c3-${title}`, name: `Signature ${title} 3`, price: 4999, img: '🌼' })}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c3-${title}`, name: `Signature ${title} 3`, price: 4999, img: imgSaree3 })}>Add to Cart</button>
             </div>
           </div>
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p4">💜</div>
+              <img src={imgSaree4} alt="Signature Saree" className="product-img-asset" />
             </div>
             <div className="product-info">
               <h4>Signature {title} 4</h4>
@@ -70,7 +80,7 @@ function CollectionPage({ title, addToCart }: { title: string, addToCart: (p: Pr
               <div className="product-price">
                 <span className="price-now">₹1,899</span>
               </div>
-              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c4-${title}`, name: `Signature ${title} 4`, price: 1899, img: '💜' })}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c4-${title}`, name: `Signature ${title} 4`, price: 1899, img: imgSaree4 })}>Add to Cart</button>
             </div>
           </div>
         </div>
@@ -106,14 +116,13 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
             <h1>Drape Yourself in <em>Timeless Elegance</em></h1>
             <p>Curated by Renu Bhatia, celebrating the grace of Indian womanhood through the finest sarees, suits, and traditional wear.</p>
             <div className="hero-btns">
-              <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Shop Sarees</a>
-              <a href="#" className="btn-outline" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>View All Collections</a>
+              <a href="#" className="btn-primary" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Shop Sarees</a>
+              <a href="#" className="btn-outline" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>View All Collections</a>
             </div>
           </div>
           <div className="hero-visual">
             <div className="hero-ornament"></div>
             <div className="hero-logo-container">
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: '2px solid var(--gold)', color: 'var(--gold)', fontFamily: 'Cormorant Garamond, serif', fontSize: '120px', background: 'rgba(201, 169, 110, 0.05)', zIndex: 1 }}>KF</div>
               <img 
                 src="/logo.png" 
                 alt="Kia Fashion" 
@@ -161,10 +170,9 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
         </div>
         <div className="categories">
           <div className="categories-grid">
-            <div className="cat-card cat-card-1" onClick={() => navigate('silk-sarees')}>
+            <div className="cat-card" onClick={() => navigate('silk-sarees')}>
               <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">🥻</span>
+                <img src={imgSaree1} alt="Sarees" className="cat-img-asset" />
               </div>
               <div className="cat-badge">Trending</div>
               <div className="cat-label">
@@ -172,20 +180,18 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <p>200+ styles</p>
               </div>
             </div>
-            <div className="cat-card cat-card-2" onClick={() => navigate('party-wear')}>
+            <div className="cat-card" onClick={() => navigate('party-wear')}>
               <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">👘</span>
+                <img src={imgSaree2} alt="Salwar Suits" className="cat-img-asset" />
               </div>
               <div className="cat-label">
                 <h3>Salwar Suits</h3>
                 <p>Everyday elegance</p>
               </div>
             </div>
-            <div className="cat-card cat-card-3" onClick={() => navigate('bridal-collection')}>
+            <div className="cat-card" onClick={() => navigate('bridal-collection')}>
               <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">🪷</span>
+                <img src={imgSaree6} alt="Lehengas" className="cat-img-asset" />
               </div>
               <div className="cat-badge">New</div>
               <div className="cat-label">
@@ -193,10 +199,9 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <p>Festive & bridal</p>
               </div>
             </div>
-            <div className="cat-card cat-card-4" onClick={() => navigate('cotton-sarees')}>
+            <div className="cat-card" onClick={() => navigate('cotton-sarees')}>
               <div className="cat-bg">
-                <div className="cat-pattern"></div>
-                <span className="cat-icon">✨</span>
+                <img src={imgSaree4} alt="Kurtis" className="cat-img-asset" />
               </div>
               <div className="cat-label">
                 <h3>Kurtis</h3>
@@ -222,7 +227,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
         <div className="products-grid">
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p1">🥻</div>
+              <img src={imgSaree1} alt="Crimson Banarasi Silk Saree" className="product-img-asset" />
               <div className="product-badge">New</div>
             </div>
             <div className="product-info" onClick={() => navigate('banarasi-sarees')}>
@@ -233,13 +238,13 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹5,999</span>
                 <span className="price-save">58% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p1', name: 'Crimson Banarasi Silk Saree', price: 2499, img: '🥻' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p1', name: 'Crimson Banarasi Silk Saree', price: 2499, img: imgSaree1 }); }}>Add to Cart</button>
             </div>
           </div>
 
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p2">🌸</div>
+              <img src={imgSaree2} alt="Powder Blue Chiffon Saree" className="product-img-asset" />
               <div className="product-badge">Bestseller</div>
             </div>
             <div className="product-info" onClick={() => navigate('party-wear')}>
@@ -250,13 +255,13 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹3,200</span>
                 <span className="price-save">59% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p2', name: 'Powder Blue Chiffon Saree', price: 1299, img: '🌸' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p2', name: 'Powder Blue Chiffon Saree', price: 1299, img: imgSaree2 }); }}>Add to Cart</button>
             </div>
           </div>
 
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p3">🌼</div>
+              <img src={imgSaree3} alt="Golden Kanjivaram Silk Saree" className="product-img-asset" />
             </div>
             <div className="product-info" onClick={() => navigate('kanjivaram-sarees')}>
               <h4>Golden Kanjivaram Silk Saree</h4>
@@ -266,13 +271,13 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹8,500</span>
                 <span className="price-save">53% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p3', name: 'Golden Kanjivaram Silk Saree', price: 3999, img: '🌼' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p3', name: 'Golden Kanjivaram Silk Saree', price: 3999, img: imgSaree3 }); }}>Add to Cart</button>
             </div>
           </div>
 
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p4">💜</div>
+              <img src={imgSaree4} alt="Violet Georgette Party Saree" className="product-img-asset" />
               <div className="product-badge">Sale</div>
             </div>
             <div className="product-info" onClick={() => navigate('party-wear')}>
@@ -283,7 +288,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹4,200</span>
                 <span className="price-save">57% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p4', name: 'Violet Georgette Party Saree', price: 1799, img: '💜' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p4', name: 'Violet Georgette Party Saree', price: 1799, img: imgSaree4 }); }}>Add to Cart</button>
             </div>
           </div>
         </div>
@@ -294,7 +299,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
         <div className="inner">
           <h2>The <em>Heritage Saree</em> Collection</h2>
           <p>Paithani · Banarasi · Kanjivaram · Bandhani · Kalamkari · Ikkat</p>
-          <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Explore Heritage Weaves</a>
+          <a href="#" className="btn-primary" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Explore Heritage Weaves</a>
         </div>
       </div>
 
@@ -313,7 +318,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
         <div className="products-grid">
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p5">🍃</div>
+              <img src={imgSaree5} alt="Emerald Green Ikkat Saree" className="product-img-asset" />
               <div className="product-badge">Top Rated</div>
             </div>
             <div className="product-info" onClick={() => navigate('cotton-sarees')}>
@@ -324,13 +329,13 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹2,500</span>
                 <span className="price-save">60% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p5', name: 'Emerald Green Ikkat Saree', price: 999, img: '🍃' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p5', name: 'Emerald Green Ikkat Saree', price: 999, img: imgSaree5 }); }}>Add to Cart</button>
             </div>
           </div>
 
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p6">🔴</div>
+              <img src={imgSaree6} alt="Bridal Red Bandhani Saree" className="product-img-asset" />
             </div>
             <div className="product-info" onClick={() => navigate('bandhani-sarees')}>
               <h4>Bridal Red Bandhani Saree</h4>
@@ -340,13 +345,13 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹5,500</span>
                 <span className="price-save">60% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p6', name: 'Bridal Red Bandhani Saree', price: 2199, img: '🔴' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p6', name: 'Bridal Red Bandhani Saree', price: 2199, img: imgSaree6 }); }}>Add to Cart</button>
             </div>
           </div>
 
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p7">🌺</div>
+              <img src={imgSaree7} alt="Rani Pink Paithani Saree" className="product-img-asset" />
               <div className="product-badge">Festive Pick</div>
             </div>
             <div className="product-info" onClick={() => navigate('silk-sarees')}>
@@ -357,13 +362,13 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹7,200</span>
                 <span className="price-save">54% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p7', name: 'Rani Pink Paithani Saree', price: 3299, img: '🌺' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p7', name: 'Rani Pink Paithani Saree', price: 3299, img: imgSaree7 }); }}>Add to Cart</button>
             </div>
           </div>
 
           <div className="product-card">
             <div className="product-img">
-              <div className="product-img-bg p8">🌿</div>
+              <img src={imgSaree8} alt="Mint Kalamkari Cotton Saree" className="product-img-asset" />
             </div>
             <div className="product-info" onClick={() => navigate('cotton-sarees')}>
               <h4>Mint Kalamkari Cotton Saree</h4>
@@ -373,7 +378,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
                 <span className="price-old">₹1,800</span>
                 <span className="price-save">56% off</span>
               </div>
-              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p8', name: 'Mint Kalamkari Cotton Saree', price: 799, img: '🌿' }); }}>Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e: React.MouseEvent) => { e.stopPropagation(); addToCart({ id: 'p8', name: 'Mint Kalamkari Cotton Saree', price: 799, img: imgSaree8 }); }}>Add to Cart</button>
             </div>
           </div>
         </div>
@@ -393,25 +398,23 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
         <div className="collections-section">
           <div className="collections-duo">
             <div className="coll-card" onClick={() => navigate('bridal-collection')}>
-              <div className="coll-bg coll-bg-1">
-                <div className="coll-pattern"></div>
-                🥻
+              <div className="coll-bg">
+                <img src={imgSaree6} alt="Bridal Collection" className="coll-img-asset" />
               </div>
               <div className="coll-overlay">
                 <span className="eyebrow">✦ Bridal Season 2025</span>
                 <h3>Wedding & Bridal Sarees</h3>
-                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Shop Bridal →</a>
+                <a href="#" className="coll-link" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Shop Bridal →</a>
               </div>
             </div>
             <div className="coll-card" onClick={() => navigate('party-wear')}>
-              <div className="coll-bg coll-bg-2">
-                <div className="coll-pattern"></div>
-                ✨
+              <div className="coll-bg">
+                <img src={imgSaree8} alt="Everyday Chic" className="coll-img-asset" />
               </div>
               <div className="coll-overlay">
                 <span className="eyebrow">✦ Everyday Chic</span>
                 <h3>Office & Daily Wear Sarees</h3>
-                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Shop Collection →</a>
+                <a href="#" className="coll-link" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Shop Collection →</a>
               </div>
             </div>
           </div>
@@ -461,9 +464,6 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
             <p>Founded by Renu Bhatia with a deep love for Indian textiles, Kia Fashion brings you handpicked, authentic women's clothing from the finest weavers and artisans across India. Every piece tells a story.</p>
             <div className="owner-badge">
               <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0, position: 'relative' }}>
-                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, var(--crimson), var(--rose))', color: 'white', fontFamily: 'Cormorant Garamond, serif', fontSize: '24px', zIndex: 1 }}>
-                  R
-                </div>
                 <img 
                   src="/owner.jpg" 
                   alt="Renu Bhatia" 
@@ -763,9 +763,12 @@ export default function App() {
           transition: color 0.3s;
           cursor: pointer;
           position: relative;
+          display: flex;
+          align-items: center;
         }
 
         .header-icons a:hover { color: var(--crimson); }
+        .header-icons a:hover svg { fill: var(--crimson); }
 
         .icon-badge {
           position: absolute;
@@ -855,11 +858,8 @@ export default function App() {
         .cart-item-img {
           width: 70px;
           height: 90px;
-          background: var(--cream);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 30px;
+          object-fit: cover;
+          border-radius: 4px;
         }
 
         .cart-item-details {
@@ -1183,34 +1183,21 @@ export default function App() {
           cursor: pointer;
         }
 
-        .cat-card .cat-bg {
+        .cat-bg {
           width: 100%;
           height: 100%;
-          transition: transform 0.6s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          background: #e6ded5; /* Light placeholder color */
           position: relative;
         }
 
-        .cat-card:hover .cat-bg { transform: scale(1.05); }
-
-        .cat-card-1 .cat-bg { background: linear-gradient(160deg, #5C2D36, #8B2E3A); }
-        .cat-card-2 .cat-bg { background: linear-gradient(160deg, #3D2B1F, #7A4E3A); }
-        .cat-card-3 .cat-bg { background: linear-gradient(160deg, #1F2D3D, #3A4E7A); }
-        .cat-card-4 .cat-bg { background: linear-gradient(160deg, #2D3D1F, #4E7A3A); }
-
-        .cat-icon {
-          font-size: 60px;
-          opacity: 0.3;
-          position: absolute;
+        .cat-img-asset {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
         }
 
-        .cat-pattern {
-          position: absolute;
-          inset: 0;
-          background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3C/g%3E%3C/svg%3E");
-        }
+        .cat-card:hover .cat-img-asset { transform: scale(1.05); }
 
         .cat-label {
           position: absolute;
@@ -1279,28 +1266,17 @@ export default function App() {
           aspect-ratio: 3/4;
           overflow: hidden;
           position: relative;
+          background: #e6ded5;
         }
 
-        .product-img-bg {
+        .product-img-asset {
           width: 100%;
           height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 80px;
+          object-fit: cover;
           transition: transform 0.5s;
         }
 
-        .product-card:hover .product-img-bg { transform: scale(1.04); }
-
-        .p1 { background: linear-gradient(160deg, #F5E6E8, #E8C4C4); }
-        .p2 { background: linear-gradient(160deg, #E8EEF5, #C4D4E8); }
-        .p3 { background: linear-gradient(160deg, #F5F0E8, #E8DFC4); }
-        .p4 { background: linear-gradient(160deg, #EEE8F5, #D4C4E8); }
-        .p5 { background: linear-gradient(160deg, #E8F5EE, #C4E8D4); }
-        .p6 { background: linear-gradient(160deg, #F5EBE8, #E8C4B8); }
-        .p7 { background: linear-gradient(160deg, #F5E8EE, #E8C4D4); }
-        .p8 { background: linear-gradient(160deg, #EEF5E8, #D4E8C4); }
+        .product-card:hover .product-img-asset { transform: scale(1.04); }
 
         .product-badge {
           position: absolute;
@@ -1450,24 +1426,18 @@ export default function App() {
         .coll-bg {
           width: 100%;
           height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 100px;
-          transition: transform 0.6s;
+          background: #e6ded5;
           position: relative;
         }
 
-        .coll-card:hover .coll-bg { transform: scale(1.05); }
-
-        .coll-bg-1 { background: linear-gradient(135deg, #5C2D36 0%, #8B2E3A 50%, #B85C6E 100%); }
-        .coll-bg-2 { background: linear-gradient(135deg, #2D3D5C 0%, #3A5C8B 100%); }
-
-        .coll-pattern {
-          position: absolute;
-          inset: 0;
-          background: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'%3E%3Ccircle cx='25' cy='25' r='20'/%3E%3Ccircle cx='25' cy='25' r='10'/%3E%3C/g%3E%3C/svg%3E");
+        .coll-img-asset {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s ease;
         }
+
+        .coll-card:hover .coll-img-asset { transform: scale(1.05); }
 
         .coll-overlay {
           position: absolute;
@@ -1693,12 +1663,6 @@ export default function App() {
           margin-bottom: 16px;
         }
 
-        .footer-brand .brand-logo .css-logo {
-          width: 50px;
-          height: 50px;
-          font-size: 20px;
-        }
-
         .footer-brand .brand-logo span {
           font-family: 'Cormorant Garamond', serif;
           font-size: 22px;
@@ -1819,7 +1783,7 @@ export default function App() {
               ) : (
                 cart.map((item, index) => (
                   <div key={index} className="cart-item">
-                    <div className="cart-item-img">{item.img}</div>
+                    <img src={item.img} alt={item.name} className="cart-item-img" />
                     <div className="cart-item-details">
                       <div className="cart-item-title">{item.name}</div>
                       <div className="cart-item-price">₹{item.price}</div>
@@ -1850,9 +1814,8 @@ export default function App() {
       {/* HEADER */}
       <header>
         <div className="header-inner">
-          <a className="logo-area" onClick={(e) => { e.preventDefault(); navigate('home'); }}>
+          <a className="logo-area" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('home'); }}>
             <div className="logo-container">
-              <div className="css-logo">KF</div>
               <img 
                 src="/logo.png" 
                 alt="Kia Fashion" 
@@ -1867,17 +1830,19 @@ export default function App() {
           </a>
 
           <nav>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Sarees</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Salwar Suits</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Lehengas</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Kurtis</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Collections</a>
-            <a href="#" className="sale" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Sale</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Sarees</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Salwar Suits</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Lehengas</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('cotton-sarees'); }}>Kurtis</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Collections</a>
+            <a href="#" className="sale" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Sale</a>
           </nav>
 
           <div className="header-icons">
-            <a onClick={(e) => { e.preventDefault(); setIsCartOpen(true); }} title="Cart">
-              🛍
+            <a onClick={(e: React.MouseEvent) => { e.preventDefault(); setIsCartOpen(true); }} title="Cart">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" width="22" height="22">
+                  <path d="M12 2c-2.76 0-5 2.24-5 5H2v2l2 11h16l2-11V7h-5c0-2.76-2.24-5-5-5zm0 2c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3z"/>
+              </svg>
               {cart.length > 0 && <span className="icon-badge">{cart.length}</span>}
             </a>
           </div>
@@ -1896,7 +1861,6 @@ export default function App() {
             <div className="footer-brand">
               <div className="brand-logo" style={{ cursor: 'pointer' }} onClick={() => navigate('home')}>
                 <div className="logo-container">
-                  <div className="css-logo" style={{fontSize: '20px'}}>KF</div>
                   <img src="/logo.png" alt="Kia Fashion" className="logo-img" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                 </div>
                 <span>Kia Fashion</span>
@@ -1913,26 +1877,26 @@ export default function App() {
             <div className="footer-col">
               <h4>Collections</h4>
               <ul>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Silk Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Banarasi Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('kanjivaram-sarees'); }}>Kanjivaram Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('bandhani-sarees'); }}>Bandhani Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Cotton Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Party Wear</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Bridal Collection</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Silk Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Banarasi Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('kanjivaram-sarees'); }}>Kanjivaram Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bandhani-sarees'); }}>Bandhani Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('cotton-sarees'); }}>Cotton Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Party Wear</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Bridal Collection</a></li>
               </ul>
             </div>
 
             <div className="footer-col">
               <h4>Information</h4>
               <ul>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('about-us'); }}>About Us</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('contact-us'); }}>Contact Us</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('faqs'); }}>FAQs</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('shipping-policy'); }}>Shipping Policy</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('return-policy'); }}>Return Policy</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('privacy-policy'); }}>Privacy Policy</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('track-order'); }}>Track Order</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('about-us'); }}>About Us</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('contact-us'); }}>Contact Us</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('faqs'); }}>FAQs</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('shipping-policy'); }}>Shipping Policy</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('return-policy'); }}>Return Policy</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('privacy-policy'); }}>Privacy Policy</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('track-order'); }}>Track Order</a></li>
               </ul>
             </div>
 
