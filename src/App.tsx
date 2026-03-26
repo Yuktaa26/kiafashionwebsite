@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 
+// --- INTERFACES & TYPES ---
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  img: string;
+}
+
 // --- SUB-COMPONENTS FOR ROUTING ---
 
-function CollectionPage({ title }: { title: string }) {
+function CollectionPage({ title, addToCart, wishlist, toggleWishlist }: { title: string, addToCart: (p: Product) => void, wishlist: string[], toggleWishlist: (id: string) => void }) {
   return (
     <div className="page-container" style={{ minHeight: '60vh', background: 'var(--cream)', paddingBottom: '70px' }}>
       <div className="page-header">
@@ -16,7 +24,9 @@ function CollectionPage({ title }: { title: string }) {
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p1">🥻</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={() => toggleWishlist(`c1-${title}`)} style={{ color: wishlist.includes(`c1-${title}`) ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes(`c1-${title}`) ? '♥' : '♡'}
+              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 1</h4>
@@ -24,13 +34,15 @@ function CollectionPage({ title }: { title: string }) {
               <div className="product-price">
                 <span className="price-now">₹2,499</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c1-${title}`, name: `Signature ${title} 1`, price: 2499, img: '🥻' })}>Add to Cart</button>
             </div>
           </div>
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p2">🌸</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={() => toggleWishlist(`c2-${title}`)} style={{ color: wishlist.includes(`c2-${title}`) ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes(`c2-${title}`) ? '♥' : '♡'}
+              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 2</h4>
@@ -38,13 +50,15 @@ function CollectionPage({ title }: { title: string }) {
               <div className="product-price">
                 <span className="price-now">₹3,299</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c2-${title}`, name: `Signature ${title} 2`, price: 3299, img: '🌸' })}>Add to Cart</button>
             </div>
           </div>
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p3">🌼</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={() => toggleWishlist(`c3-${title}`)} style={{ color: wishlist.includes(`c3-${title}`) ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes(`c3-${title}`) ? '♥' : '♡'}
+              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 3</h4>
@@ -52,13 +66,15 @@ function CollectionPage({ title }: { title: string }) {
               <div className="product-price">
                 <span className="price-now">₹4,999</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c3-${title}`, name: `Signature ${title} 3`, price: 4999, img: '🌼' })}>Add to Cart</button>
             </div>
           </div>
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p4">💜</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={() => toggleWishlist(`c4-${title}`)} style={{ color: wishlist.includes(`c4-${title}`) ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes(`c4-${title}`) ? '♥' : '♡'}
+              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 4</h4>
@@ -66,7 +82,7 @@ function CollectionPage({ title }: { title: string }) {
               <div className="product-price">
                 <span className="price-now">₹1,899</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={() => addToCart({ id: `c4-${title}`, name: `Signature ${title} 4`, price: 1899, img: '💜' })}>Add to Cart</button>
             </div>
           </div>
         </div>
@@ -90,7 +106,7 @@ function InfoPage({ title, content }: { title: string, content: string }) {
   );
 }
 
-function Home({ navigate }: { navigate: (page: string) => void }) {
+function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (page: string) => void, addToCart: (p: Product) => void, wishlist: string[], toggleWishlist: (id: string) => void }) {
   return (
     <>
       {/* HERO */}
@@ -108,8 +124,19 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
           </div>
           <div className="hero-visual">
             <div className="hero-ornament"></div>
-            <div className="hero-logo-large" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '320px', height: '320px', borderRadius: '50%', border: '2px solid var(--gold)', color: 'var(--gold)', fontFamily: 'Cormorant Garamond, serif', fontSize: '120px', animation: 'float 6s ease-in-out infinite', background: 'rgba(201, 169, 110, 0.05)' }}>
-              KF
+            <div className="hero-logo-container">
+              <img 
+                src="/logo.png" 
+                alt="Kia Fashion" 
+                className="hero-logo-large"
+                onError={(e) => { 
+                  e.currentTarget.style.display = 'none'; 
+                  const parent = e.currentTarget.parentElement;
+                  if (parent) {
+                    parent.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;width:320px;height:320px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);font-family:Cormorant Garamond, serif;font-size:120px;animation:float 6s ease-in-out infinite;background:rgba(201, 169, 110, 0.05);">KF</div>';
+                  }
+                }}
+              />
             </div>
           </div>
         </div>
@@ -209,13 +236,15 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
         </div>
 
         <div className="products-grid">
-          <div className="product-card" onClick={() => navigate('banarasi-sarees')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p1">🥻</div>
               <div className="product-badge">New</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p1'); }} style={{ color: wishlist.includes('p1') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p1') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('banarasi-sarees')}>
               <h4>Crimson Banarasi Silk Saree</h4>
               <p className="fabric">Pure Silk · Woven</p>
               <div className="product-price">
@@ -223,17 +252,19 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹5,999</span>
                 <span className="price-save">58% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p1', name: 'Crimson Banarasi Silk Saree', price: 2499, img: '🥻' }); }}>Add to Cart</button>
             </div>
           </div>
 
-          <div className="product-card" onClick={() => navigate('party-wear')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p2">🌸</div>
               <div className="product-badge">Bestseller</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p2'); }} style={{ color: wishlist.includes('p2') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p2') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('party-wear')}>
               <h4>Powder Blue Chiffon Saree</h4>
               <p className="fabric">Chiffon · Printed</p>
               <div className="product-price">
@@ -241,16 +272,18 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹3,200</span>
                 <span className="price-save">59% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p2', name: 'Powder Blue Chiffon Saree', price: 1299, img: '🌸' }); }}>Add to Cart</button>
             </div>
           </div>
 
-          <div className="product-card" onClick={() => navigate('kanjivaram-sarees')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p3">🌼</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p3'); }} style={{ color: wishlist.includes('p3') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p3') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('kanjivaram-sarees')}>
               <h4>Golden Kanjivaram Silk Saree</h4>
               <p className="fabric">Kanjivaram · Embroidered</p>
               <div className="product-price">
@@ -258,17 +291,19 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹8,500</span>
                 <span className="price-save">53% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p3', name: 'Golden Kanjivaram Silk Saree', price: 3999, img: '🌼' }); }}>Add to Cart</button>
             </div>
           </div>
 
-          <div className="product-card" onClick={() => navigate('party-wear')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p4">💜</div>
               <div className="product-badge">Sale</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p4'); }} style={{ color: wishlist.includes('p4') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p4') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('party-wear')}>
               <h4>Violet Georgette Party Saree</h4>
               <p className="fabric">Georgette · Sequin</p>
               <div className="product-price">
@@ -276,7 +311,7 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹4,200</span>
                 <span className="price-save">57% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p4', name: 'Violet Georgette Party Saree', price: 1799, img: '💜' }); }}>Add to Cart</button>
             </div>
           </div>
         </div>
@@ -304,13 +339,15 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
         </div>
 
         <div className="products-grid">
-          <div className="product-card" onClick={() => navigate('cotton-sarees')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p5">🍃</div>
               <div className="product-badge">Top Rated</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p5'); }} style={{ color: wishlist.includes('p5') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p5') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('cotton-sarees')}>
               <h4>Emerald Green Ikkat Saree</h4>
               <p className="fabric">Cotton Silk · Handwoven</p>
               <div className="product-price">
@@ -318,16 +355,18 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹2,500</span>
                 <span className="price-save">60% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p5', name: 'Emerald Green Ikkat Saree', price: 999, img: '🍃' }); }}>Add to Cart</button>
             </div>
           </div>
 
-          <div className="product-card" onClick={() => navigate('bandhani-sarees')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p6">🔴</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p6'); }} style={{ color: wishlist.includes('p6') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p6') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('bandhani-sarees')}>
               <h4>Bridal Red Bandhani Saree</h4>
               <p className="fabric">Georgette · Bandhani</p>
               <div className="product-price">
@@ -335,17 +374,19 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹5,500</span>
                 <span className="price-save">60% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p6', name: 'Bridal Red Bandhani Saree', price: 2199, img: '🔴' }); }}>Add to Cart</button>
             </div>
           </div>
 
-          <div className="product-card" onClick={() => navigate('silk-sarees')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p7">🌺</div>
               <div className="product-badge">Festive Pick</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p7'); }} style={{ color: wishlist.includes('p7') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p7') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('silk-sarees')}>
               <h4>Rani Pink Paithani Saree</h4>
               <p className="fabric">Silk · Traditional Weave</p>
               <div className="product-price">
@@ -353,16 +394,18 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹7,200</span>
                 <span className="price-save">54% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p7', name: 'Rani Pink Paithani Saree', price: 3299, img: '🌺' }); }}>Add to Cart</button>
             </div>
           </div>
 
-          <div className="product-card" onClick={() => navigate('cotton-sarees')}>
+          <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p8">🌿</div>
-              <div className="product-wishlist">♡</div>
+              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p8'); }} style={{ color: wishlist.includes('p8') ? 'var(--crimson)' : 'inherit' }}>
+                {wishlist.includes('p8') ? '♥' : '♡'}
+              </div>
             </div>
-            <div className="product-info">
+            <div className="product-info" onClick={() => navigate('cotton-sarees')}>
               <h4>Mint Kalamkari Cotton Saree</h4>
               <p className="fabric">Cotton · Kalamkari Print</p>
               <div className="product-price">
@@ -370,7 +413,7 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
                 <span className="price-old">₹1,800</span>
                 <span className="price-save">56% off</span>
               </div>
-              <button className="add-to-cart-btn">Add to Cart</button>
+              <button className="add-to-cart-btn" onClick={(e) => { e.stopPropagation(); addToCart({ id: 'p8', name: 'Mint Kalamkari Cotton Saree', price: 799, img: '🌿' }); }}>Add to Cart</button>
             </div>
           </div>
         </div>
@@ -457,8 +500,16 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
             <h2>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>Kia Fashion?</em></h2>
             <p>Founded by Renu Bhatia with a deep love for Indian textiles, Kia Fashion brings you handpicked, authentic women's clothing from the finest weavers and artisans across India. Every piece tells a story.</p>
             <div className="owner-badge">
-              <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, var(--crimson), var(--rose))', color: 'white', fontFamily: 'Cormorant Garamond, serif', fontSize: '24px' }}>
-                R
+              <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0, position: 'relative' }}>
+                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, var(--crimson), var(--rose))', color: 'white', fontFamily: 'Cormorant Garamond, serif', fontSize: '24px', zIndex: 1 }}>
+                  R
+                </div>
+                <img 
+                  src="/owner.jpg" 
+                  alt="Renu Bhatia" 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} 
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }} 
+                />
               </div>
               <div className="owner-info">
                 <div className="name">Renu Bhatia</div>
@@ -498,24 +549,48 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [cart, setCart] = useState<Product[]>([]);
+  const [wishlist, setWishlist] = useState<string[]>([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const navigate = (page: string) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const addToCart = (product: Product) => {
+    setCart([...cart, product]);
+    setIsCartOpen(true);
+  };
+
+  const removeFromCart = (indexToRemove: number) => {
+    setCart(cart.filter((_, index) => index !== indexToRemove));
+  };
+
+  const toggleWishlist = (productId: string) => {
+    if (wishlist.includes(productId)) {
+      setWishlist(wishlist.filter(id => id !== productId));
+    } else {
+      setWishlist([...wishlist, productId]);
+    }
+  };
+
+  const cartTotal = cart.reduce((total, item) => total + item.price, 0);
+
   const renderPage = () => {
     switch(currentPage) {
-      case 'home': return <Home navigate={navigate} />;
+      case 'home': return <Home navigate={navigate} addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
       
       // Collection Pages
-      case 'silk-sarees': return <CollectionPage title="Silk Sarees" />;
-      case 'banarasi-sarees': return <CollectionPage title="Banarasi Sarees" />;
-      case 'kanjivaram-sarees': return <CollectionPage title="Kanjivaram Sarees" />;
-      case 'bandhani-sarees': return <CollectionPage title="Bandhani Sarees" />;
-      case 'cotton-sarees': return <CollectionPage title="Cotton Sarees" />;
-      case 'party-wear': return <CollectionPage title="Party Wear" />;
-      case 'bridal-collection': return <CollectionPage title="Bridal Collection" />;
+      case 'silk-sarees': return <CollectionPage title="Silk Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'banarasi-sarees': return <CollectionPage title="Banarasi Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'kanjivaram-sarees': return <CollectionPage title="Kanjivaram Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'bandhani-sarees': return <CollectionPage title="Bandhani Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'cotton-sarees': return <CollectionPage title="Cotton Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'party-wear': return <CollectionPage title="Party Wear" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'bridal-collection': return <CollectionPage title="Bridal Collection" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
 
       // Information Pages
       case 'about-us': 
@@ -533,7 +608,7 @@ export default function App() {
       case 'track-order': 
         return <InfoPage title="Track Your Order" content="To track your recent shipment, please check your email for the tracking link provided by our courier partners upon dispatch. If you cannot find the email, contact our support team with your Order ID and we will provide you with live tracking details immediately." />;
 
-      default: return <Home navigate={navigate} />;
+      default: return <Home navigate={navigate} addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
     }
   };
 
@@ -639,9 +714,15 @@ export default function App() {
           cursor: pointer;
         }
 
-        .css-logo {
+        .logo-container {
+          position: relative;
           width: 50px;
           height: 50px;
+        }
+
+        .css-logo {
+          position: absolute;
+          inset: 0;
           background: var(--crimson);
           color: white;
           border-radius: 50%;
@@ -652,6 +733,16 @@ export default function App() {
           font-size: 22px;
           font-weight: 600;
           letter-spacing: 1px;
+          z-index: 1;
+        }
+
+        .logo-img {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          mix-blend-mode: multiply;
         }
 
         .logo-text {
@@ -722,9 +813,178 @@ export default function App() {
           font-size: 20px;
           transition: color 0.3s;
           cursor: pointer;
+          position: relative;
         }
 
         .header-icons a:hover { color: var(--crimson); }
+
+        .icon-badge {
+          position: absolute;
+          top: -6px;
+          right: -8px;
+          background: var(--crimson);
+          color: white;
+          font-size: 10px;
+          font-weight: bold;
+          font-family: sans-serif;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        /* MODALS & OVERLAYS */
+        .modal-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.6);
+          z-index: 2000;
+          backdrop-filter: blur(4px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .cart-sidebar {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          width: 400px;
+          max-width: 100vw;
+          background: white;
+          z-index: 2001;
+          box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+          display: flex;
+          flex-direction: column;
+          animation: slideIn 0.3s ease forwards;
+        }
+
+        @keyframes slideIn {
+          from { transform: translateX(100%); }
+          to { transform: translateX(0); }
+        }
+
+        .cart-header {
+          padding: 20px 30px;
+          border-bottom: 1px solid var(--cream);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .cart-header h2 {
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 24px;
+        }
+
+        .close-btn {
+          background: none;
+          border: none;
+          font-size: 28px;
+          cursor: pointer;
+          color: var(--text-muted);
+        }
+
+        .cart-items {
+          flex: 1;
+          overflow-y: auto;
+          padding: 20px 30px;
+        }
+
+        .cart-item {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid var(--cream);
+        }
+
+        .cart-item-img {
+          width: 70px;
+          height: 90px;
+          background: var(--cream);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 30px;
+        }
+
+        .cart-item-details flex: 1;
+
+        .cart-item-title {
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+          color: var(--crimson);
+          font-weight: 600;
+          font-family: 'Cormorant Garamond', serif;
+        }
+
+        .remove-item {
+          color: var(--text-muted);
+          font-size: 12px;
+          text-decoration: underline;
+          cursor: pointer;
+          margin-top: 5px;
+          display: inline-block;
+        }
+
+        .cart-footer {
+          padding: 30px;
+          background: var(--warm-white);
+          border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .cart-total {
+          display: flex;
+          justify-content: space-between;
+          font-size: 20px;
+          font-family: 'Cormorant Garamond', serif;
+          font-weight: 600;
+          margin-bottom: 20px;
+        }
+
+        .checkout-btn {
+          width: 100%;
+          padding: 16px;
+          background: var(--crimson);
+          color: white;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          font-weight: 600;
+          border: none;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+
+        .checkout-btn:hover { background: var(--dark); }
+
+        .search-modal {
+          background: white;
+          padding: 40px;
+          width: 90%;
+          max-width: 600px;
+          border-radius: 8px;
+          position: relative;
+        }
+
+        .search-input {
+          width: 100%;
+          padding: 20px;
+          font-size: 18px;
+          border: none;
+          border-bottom: 2px solid var(--crimson);
+          font-family: 'Jost', sans-serif;
+          outline: none;
+          background: transparent;
+        }
 
         /* HERO SECTION */
         .hero {
@@ -1120,6 +1380,7 @@ export default function App() {
           box-shadow: 0 2px 8px rgba(0,0,0,0.1);
           cursor: pointer;
           transition: all 0.2s;
+          z-index: 10;
         }
 
         .product-wishlist:hover { background: var(--blush); }
@@ -1415,16 +1676,7 @@ export default function App() {
         .owner-avatar {
           width: 52px;
           height: 52px;
-          background: linear-gradient(135deg, var(--crimson), var(--rose));
           border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 22px;
-          color: white;
-          font-family: 'Cormorant Garamond', serif;
-          font-weight: 600;
-          flex-shrink: 0;
         }
 
         .owner-info .name {
@@ -1697,6 +1949,65 @@ export default function App() {
         }
       ` }} />
 
+      {/* OVERLAYS AND MODALS */}
+      {isCartOpen && (
+        <div className="modal-overlay" onClick={() => setIsCartOpen(false)}>
+          <div className="cart-sidebar" onClick={(e) => e.stopPropagation()}>
+            <div className="cart-header">
+              <h2>Your Cart ({cart.length})</h2>
+              <button className="close-btn" onClick={() => setIsCartOpen(false)}>×</button>
+            </div>
+            <div className="cart-items">
+              {cart.length === 0 ? (
+                <p style={{ textAlign: 'center', marginTop: '40px', color: 'var(--text-muted)' }}>Your cart is currently empty.</p>
+              ) : (
+                cart.map((item, index) => (
+                  <div key={index} className="cart-item">
+                    <div className="cart-item-img">{item.img}</div>
+                    <div className="cart-item-details">
+                      <div className="cart-item-title">{item.name}</div>
+                      <div className="cart-item-price">₹{item.price}</div>
+                      <span className="remove-item" onClick={() => removeFromCart(index)}>Remove</span>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+            {cart.length > 0 && (
+              <div className="cart-footer">
+                <div className="cart-total">
+                  <span>Subtotal</span>
+                  <span>₹{cartTotal.toLocaleString()}</span>
+                </div>
+                <button className="checkout-btn">Proceed to Checkout</button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {isSearchOpen && (
+        <div className="modal-overlay" onClick={() => setIsSearchOpen(false)}>
+          <div className="search-modal" onClick={(e) => e.stopPropagation()}>
+            <h2 style={{ fontFamily: 'Cormorant Garamond', marginBottom: '20px', color: 'var(--crimson)' }}>Search Collection</h2>
+            <input 
+              type="text" 
+              className="search-input" 
+              placeholder="Search for Sarees, Suits, Lehengas..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoFocus
+            />
+            {searchQuery && (
+              <p style={{ marginTop: '20px', color: 'var(--text-muted)' }}>
+                Showing results for "{searchQuery}". <span style={{ color: 'var(--crimson)' }}>No exact matches found.</span>
+              </p>
+            )}
+            <button className="close-btn" style={{ position: 'absolute', top: '10px', right: '20px' }} onClick={() => setIsSearchOpen(false)}>×</button>
+          </div>
+        </div>
+      )}
+
       {/* ANNOUNCEMENT BAR */}
       <div className="announcement-bar">
         ✦ Free Shipping on Orders Above ₹999 &nbsp;|&nbsp; New Arrivals: Kanjivaram & Banarasi Collection ✦
@@ -1706,7 +2017,15 @@ export default function App() {
       <header>
         <div className="header-inner">
           <a className="logo-area" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('home'); }}>
-            <div className="css-logo">KF</div>
+            <div className="logo-container">
+              <div className="css-logo">KF</div>
+              <img 
+                src="/logo.png" 
+                alt="Kia Fashion" 
+                className="logo-img" 
+                onError={(e) => { e.currentTarget.style.display = 'none'; }} 
+              />
+            </div>
             <div className="logo-text">
               <span className="brand-name">Kia Fashion</span>
               <span className="tagline">By Renu Bhatia</span>
@@ -1723,9 +2042,15 @@ export default function App() {
           </nav>
 
           <div className="header-icons">
-            <a href="#" title="Search">🔍</a>
-            <a href="#" title="Wishlist">♡</a>
-            <a href="#" title="Cart">🛍</a>
+            <a onClick={(e: React.MouseEvent) => { e.preventDefault(); setIsSearchOpen(true); }} title="Search">🔍</a>
+            <a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('home'); }} title="Wishlist">
+              ♡
+              {wishlist.length > 0 && <span className="icon-badge">{wishlist.length}</span>}
+            </a>
+            <a onClick={(e: React.MouseEvent) => { e.preventDefault(); setIsCartOpen(true); }} title="Cart">
+              🛍
+              {cart.length > 0 && <span className="icon-badge">{cart.length}</span>}
+            </a>
           </div>
         </div>
       </header>
@@ -1751,7 +2076,10 @@ export default function App() {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="brand-logo" style={{ cursor: 'pointer' }} onClick={() => navigate('home')}>
-                <div className="css-logo">KF</div>
+                <div className="logo-container">
+                  <div className="css-logo" style={{fontSize: '20px'}}>KF</div>
+                  <img src="/logo.png" alt="Kia Fashion" className="logo-img" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
+                </div>
                 <span>Kia Fashion</span>
               </div>
               <p>Celebrating Indian craftsmanship through exquisite sarees and women's clothing. Curated by Renu Bhatia with love.</p>
@@ -1804,7 +2132,7 @@ export default function App() {
           </div>
 
           <div className="footer-bottom">
-            <span>© 2026 Kia Fashion by Renu Bhatia. All rights reserved.Skillfully crafted by Yukta Bhatia</span>
+            <span>© 2026 Kia Fashion by Renu Bhatia. All rights reserved. Skillfully crafted by Yukta Bhatia.</span>
             <span>Made with ♡ for the love of Indian textiles</span>
           </div>
         </div>
