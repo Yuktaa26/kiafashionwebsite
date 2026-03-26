@@ -98,7 +98,7 @@ function InfoPage({ title, content }: { title: string, content: string }) {
       <div className="page-content" style={{ maxWidth: '800px', margin: '0 auto', padding: '60px 30px', fontSize: '17px', lineHeight: '1.9', color: 'var(--dark)' }}>
         <p>{content}</p>
         <br/>
-        <p style={{ color: 'var(--text-muted)' }}>If you need further assistance regarding this topic, please don't hesitate to contact our support team via WhatsApp or Email. We are always here to help you experience the best of Kia Fashion.</p>
+        <p style={{ color: 'var(--text-muted)' }}>If you need further assistance regarding this topic, please don't hesitate to contact our support team via WhatsApp. We are always here to help you experience the best of Kia Fashion.</p>
       </div>
     </div>
   );
@@ -486,12 +486,12 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
             <div className="feature-item">
               <span className="fi-icon">🚚</span>
               <h4>Fast Delivery</h4>
-              <p>Pan India shipping in 3 to 5 business days</p>
+              <p>Pan India in 3 to 5 business days. Outside India up to 10-12 days.</p>
             </div>
             <div className="feature-item">
               <span className="fi-icon">↩️</span>
               <h4>Easy Returns</h4>
-              <p>7 day hassle free return policy</p>
+              <p>Only for defective products. Proper opening video required.</p>
             </div>
             <div className="feature-item">
               <span className="fi-icon">💬</span>
@@ -545,17 +545,17 @@ export default function App() {
       case 'about-us': 
         return <InfoPage title="About Us" content="Kia Fashion was founded by Renu Bhatia with a deep love for Indian textiles and traditional weaves. Our mission is to bring you handpicked, authentic women's clothing from the finest weavers and artisans across India. We believe every piece of clothing tells a story of heritage, culture, and craftsmanship." />;
       case 'contact-us': 
-        return <InfoPage title="Contact Us" content="We would love to hear from you! For any inquiries, feedback, or personal styling assistance, please reach out to us on WhatsApp at +91 XXXXX XXXXX or email us at hello@kiafashion.in. Our operating hours are Monday to Saturday, 10:00 AM to 7:00 PM." />;
+        return <InfoPage title="Contact Us" content="We would love to hear from you! For any inquiries, feedback, or personal styling assistance, please reach out to us on WhatsApp at +91 8287730510. We are available 24/7 to assist you." />;
       case 'faqs': 
         return <InfoPage title="Frequently Asked Questions" content="We strive to provide the best quality fabrics. If you have questions about sizing, please refer to the size chart on the individual product pages. For care instructions, we recommend dry cleaning for all silk and heavy embroidered items to maintain their luster and longevity." />;
       case 'shipping-policy': 
-        return <InfoPage title="Shipping Policy" content="We are thrilled to offer Free Shipping on all orders above ₹999 within India. Orders are typically processed within 24 hours and pan India delivery takes 3 to 5 business days. Please note that international shipping is currently unavailable, but we are working on bringing Kia Fashion to the world soon!" />;
+        return <InfoPage title="Shipping Policy" content="We are thrilled to offer Free Shipping on all orders above ₹999 within India. Pan India delivery takes 3 to 5 business days. For deliveries outside India, it can take up to 10 to 12 business days. Orders are typically processed within 24 hours." />;
       case 'return-policy': 
-        return <InfoPage title="Return & Exchange Policy" content="Your satisfaction is our priority. We offer a 7 day hassle free return and exchange policy from the date of delivery. Items must be unworn, unwashed, and have all original tags and packaging intact. Customized or altered items cannot be returned." />;
+        return <InfoPage title="Return & Exchange Policy" content="Returns and exchanges are only accepted if the product delivered is defective. To process a return for a defective item, a proper unboxing video is mandatory. Customized or altered items cannot be returned under any circumstances." />;
       case 'privacy-policy': 
         return <InfoPage title="Privacy Policy" content="Your privacy is critically important to us. We secure your data using industry standard encryption and never share your personal details with third parties without your explicit consent. Information collected is used solely to process your orders and improve your shopping experience." />;
       case 'track-order': 
-        return <InfoPage title="Track Your Order" content="To track your recent shipment, please check your email for the tracking link provided by our courier partners upon dispatch. If you cannot find the email, contact our support team with your Order ID and we will provide you with live tracking details immediately." />;
+        return <InfoPage title="Track Your Order" content="To track your recent shipment, please check your messages for the tracking link provided by our courier partners upon dispatch. If you cannot find it, contact our support team on WhatsApp with your Order ID and we will provide you with live tracking details immediately." />;
 
       default: return <Home navigate={navigate} addToCart={addToCart} />;
     }
@@ -1867,10 +1867,18 @@ export default function App() {
               </div>
               <p>Celebrating Indian craftsmanship through exquisite sarees and women's clothing. Curated by Renu Bhatia with love.</p>
               <div className="footer-social">
-                <a className="social-btn" href="#" title="Instagram">📷</a>
-                <a className="social-btn" href="#" title="Facebook">f</a>
-                <a className="social-btn" href="#" title="WhatsApp">💬</a>
-                <a className="social-btn" href="#" title="YouTube">▶</a>
+                <a className="social-btn" href="https://www.instagram.com/kiaa_fashion_/?hl=en" target="_blank" rel="noopener noreferrer" title="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                </a>
+                <a className="social-btn" href="https://wa.me/918287730510" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                  </svg>
+                </a>
               </div>
             </div>
 
@@ -1905,11 +1913,9 @@ export default function App() {
               <p>
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Owner:</strong> Renu Bhatia<br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>WhatsApp:</strong><br />
-                <a href="#" style={{ color: 'var(--gold)' }}>+91 8287730510</a><br /><br />
+                <a href="https://wa.me/918287730510" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--gold)' }}>+91 8287730510</a><br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Hours:</strong><br />
-                Mon to Sat, 10AM to 7PM<br /><br />
-                <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Email:</strong><br />
-                <a href="#" style={{ color: 'var(--gold)' }}>hello@kiafashion.in</a>
+                Open 24/7
               </p>
             </div>
           </div>
