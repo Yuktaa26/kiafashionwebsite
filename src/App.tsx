@@ -1,6 +1,6 @@
 export default function App() {
   return (
-    <>
+    <div style={{ overflowX: 'hidden', width: '100%', position: 'relative', maxWidth: '100vw' }}>
       <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
         rel="stylesheet"
@@ -19,15 +19,12 @@ export default function App() {
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html, body {
-          max-width: 100%;
-          overflow-x: hidden;
-        }
-
         body {
           font-family: 'Jost', sans-serif;
           background: var(--warm-white);
           color: var(--dark);
+          margin: 0;
+          padding: 0;
         }
 
         /* ANNOUNCEMENT BAR */
@@ -315,7 +312,6 @@ export default function App() {
           padding: 0 30px;
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          /* Added simplified border rule instead of divide-x for better cross compatibility */
         }
 
         .stat-item {
@@ -1144,7 +1140,7 @@ export default function App() {
           <a className="logo-area" href="#">
             <img 
               className="logo-img" 
-              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
+              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
               alt="Kia Fashion Logo" 
             />
             <div className="logo-text">
@@ -1177,7 +1173,7 @@ export default function App() {
           <div className="hero-text">
             <p className="eyebrow">✦ New Collection 2025</p>
             <h1>Drape Yourself in <em>Timeless Elegance</em></h1>
-            <p>Curated by Renu Bhatia - celebrating the grace of Indian womanhood through the finest sarees, suits, and traditional wear.</p>
+            <p>Curated by Renu Bhatia, celebrating the grace of Indian womanhood through the finest sarees, suits, and traditional wear.</p>
             <div className="hero-btns">
               <a href="#" className="btn-primary">Shop Sarees</a>
               <a href="#" className="btn-outline">View All Collections</a>
@@ -1187,7 +1183,7 @@ export default function App() {
             <div className="hero-ornament"></div>
             <img 
               className="hero-logo-large" 
-              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
+              src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
               alt="Kia Fashion" 
             />
           </div>
@@ -1521,7 +1517,7 @@ export default function App() {
             </div>
             <div className="review-card">
               <div className="review-stars">★★★★☆</div>
-              <p className="review-text">"Got the Kanjivaram silk for my daughter's wedding - every guest was complimenting me. The colours are so rich and vibrant. Highly recommended!"</p>
+              <p className="review-text">"Got the Kanjivaram silk for my daughter's wedding, every guest was complimenting me. The colours are so rich and vibrant. Highly recommended!"</p>
               <div className="reviewer-name">Sunita Verma</div>
               <div className="reviewer-city">Mumbai</div>
             </div>
@@ -1584,7 +1580,7 @@ export default function App() {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="brand-logo">
-                <img src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
+                <img src="Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
                 <span>Kia Fashion</span>
               </div>
               <p>Celebrating Indian craftsmanship through exquisite sarees and women's clothing. Curated by Renu Bhatia with love.</p>
@@ -1642,6 +1638,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
