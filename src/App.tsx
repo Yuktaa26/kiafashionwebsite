@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 // --- SUB-COMPONENTS FOR ROUTING ---
 
@@ -102,18 +102,15 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
             <h1>Drape Yourself in <em>Timeless Elegance</em></h1>
             <p>Curated by Renu Bhatia, celebrating the grace of Indian womanhood through the finest sarees, suits, and traditional wear.</p>
             <div className="hero-btns">
-              <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Shop Sarees</a>
-              <a href="#" className="btn-outline" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>View All Collections</a>
+              <a href="#" className="btn-primary" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Shop Sarees</a>
+              <a href="#" className="btn-outline" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>View All Collections</a>
             </div>
           </div>
           <div className="hero-visual">
             <div className="hero-ornament"></div>
-            <img 
-              className="hero-logo-large" 
-              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
-              alt="Kia Fashion" 
-              loading="eager"
-            />
+            <div className="hero-logo-large" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '320px', height: '320px', borderRadius: '50%', border: '2px solid var(--gold)', color: 'var(--gold)', fontFamily: 'Cormorant Garamond, serif', fontSize: '120px', animation: 'float 6s ease-in-out infinite', background: 'rgba(201, 169, 110, 0.05)' }}>
+              KF
+            </div>
           </div>
         </div>
       </section>
@@ -290,7 +287,7 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
         <div className="inner">
           <h2>The <em>Heritage Saree</em> Collection</h2>
           <p>Paithani · Banarasi · Kanjivaram · Bandhani · Kalamkari · Ikkat</p>
-          <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Explore Heritage Weaves</a>
+          <a href="#" className="btn-primary" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Explore Heritage Weaves</a>
         </div>
       </div>
 
@@ -400,7 +397,7 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
               <div className="coll-overlay">
                 <span className="eyebrow">✦ Bridal Season 2025</span>
                 <h3>Wedding & Bridal Sarees</h3>
-                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Shop Bridal →</a>
+                <a href="#" className="coll-link" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Shop Bridal →</a>
               </div>
             </div>
             <div className="coll-card" onClick={() => navigate('party-wear')}>
@@ -411,7 +408,7 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
               <div className="coll-overlay">
                 <span className="eyebrow">✦ Everyday Chic</span>
                 <h3>Office & Daily Wear Sarees</h3>
-                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Shop Collection →</a>
+                <a href="#" className="coll-link" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Shop Collection →</a>
               </div>
             </div>
           </div>
@@ -460,17 +457,8 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
             <h2>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--crimson)' }}>Kia Fashion?</em></h2>
             <p>Founded by Renu Bhatia with a deep love for Indian textiles, Kia Fashion brings you handpicked, authentic women's clothing from the finest weavers and artisans across India. Every piece tells a story.</p>
             <div className="owner-badge">
-              <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0, position: 'relative' }}>
-                <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, var(--crimson), var(--rose))', color: 'white', zIndex: 1 }}>R</div>
-                <img 
-                  src="/owner.jpg" 
-                  alt="Renu Bhatia" 
-                  loading="lazy"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'relative', zIndex: 2 }} 
-                  onError={(e) => { 
-                    e.currentTarget.style.display = 'none'; 
-                  }} 
-                />
+              <div className="owner-avatar" style={{ overflow: 'hidden', padding: 0, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, var(--crimson), var(--rose))', color: 'white', fontFamily: 'Cormorant Garamond, serif', fontSize: '24px' }}>
+                R
               </div>
               <div className="owner-info">
                 <div className="name">Renu Bhatia</div>
@@ -487,12 +475,12 @@ function Home({ navigate }: { navigate: (page: string) => void }) {
             <div className="feature-item">
               <span className="fi-icon">🚚</span>
               <h4>Fast Delivery</h4>
-              <p>Pan-India shipping in 3 to 5 business days</p>
+              <p>Pan India shipping in 3 to 5 business days</p>
             </div>
             <div className="feature-item">
               <span className="fi-icon">↩️</span>
               <h4>Easy Returns</h4>
-              <p>7-day hassle-free return policy</p>
+              <p>7 day hassle free return policy</p>
             </div>
             <div className="feature-item">
               <span className="fi-icon">💬</span>
@@ -537,11 +525,11 @@ export default function App() {
       case 'faqs': 
         return <InfoPage title="Frequently Asked Questions" content="We strive to provide the best quality fabrics. If you have questions about sizing, please refer to the size chart on the individual product pages. For care instructions, we recommend dry cleaning for all silk and heavy embroidered items to maintain their luster and longevity." />;
       case 'shipping-policy': 
-        return <InfoPage title="Shipping Policy" content="We are thrilled to offer Free Shipping on all orders above ₹999 within India. Orders are typically processed within 24 hours and pan-India delivery takes 3 to 5 business days. Please note that international shipping is currently unavailable, but we are working on bringing Kia Fashion to the world soon!" />;
+        return <InfoPage title="Shipping Policy" content="We are thrilled to offer Free Shipping on all orders above ₹999 within India. Orders are typically processed within 24 hours and pan India delivery takes 3 to 5 business days. Please note that international shipping is currently unavailable, but we are working on bringing Kia Fashion to the world soon!" />;
       case 'return-policy': 
-        return <InfoPage title="Return & Exchange Policy" content="Your satisfaction is our priority. We offer a 7-day hassle-free return and exchange policy from the date of delivery. Items must be unworn, unwashed, and have all original tags and packaging intact. Customized or altered items cannot be returned." />;
+        return <InfoPage title="Return & Exchange Policy" content="Your satisfaction is our priority. We offer a 7 day hassle free return and exchange policy from the date of delivery. Items must be unworn, unwashed, and have all original tags and packaging intact. Customized or altered items cannot be returned." />;
       case 'privacy-policy': 
-        return <InfoPage title="Privacy Policy" content="Your privacy is critically important to us. We secure your data using industry-standard encryption and never share your personal details with third parties without your explicit consent. Information collected is used solely to process your orders and improve your shopping experience." />;
+        return <InfoPage title="Privacy Policy" content="Your privacy is critically important to us. We secure your data using industry standard encryption and never share your personal details with third parties without your explicit consent. Information collected is used solely to process your orders and improve your shopping experience." />;
       case 'track-order': 
         return <InfoPage title="Track Your Order" content="To track your recent shipment, please check your email for the tracking link provided by our courier partners upon dispatch. If you cannot find the email, contact our support team with your Order ID and we will provide you with live tracking details immediately." />;
 
@@ -551,9 +539,13 @@ export default function App() {
 
   return (
     <div style={{ overflowX: 'hidden', width: '100%', position: 'relative', maxWidth: '100vw' }}>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+      />
       <style dangerouslySetInnerHTML={{ __html: `
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
-
         :root {
           --crimson: #8B2E3A;
           --rose: #B85C6E;
@@ -647,11 +639,19 @@ export default function App() {
           cursor: pointer;
         }
 
-        .logo-img {
-          width: 60px;
-          height: 60px;
-          object-fit: contain;
-          mix-blend-mode: multiply;
+        .css-logo {
+          width: 50px;
+          height: 50px;
+          background: var(--crimson);
+          color: white;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 22px;
+          font-weight: 600;
+          letter-spacing: 1px;
         }
 
         .logo-text {
@@ -841,15 +841,6 @@ export default function App() {
           justify-content: center;
           align-items: center;
           position: relative;
-        }
-
-        .hero-logo-large {
-          width: 320px;
-          height: 320px;
-          object-fit: contain;
-          filter: drop-shadow(0 20px 60px rgba(0,0,0,0.5));
-          animation: float 6s ease-in-out infinite;
-          mix-blend-mode: multiply;
         }
 
         @keyframes float {
@@ -1593,13 +1584,10 @@ export default function App() {
           margin-bottom: 16px;
         }
 
-        .footer-brand .brand-logo img {
-          width: 60px;
-          height: 60px;
-          background: var(--warm-white);
-          border-radius: 50%;
-          object-fit: contain;
-          padding: 4px;
+        .footer-brand .brand-logo .css-logo {
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
         }
 
         .footer-brand .brand-logo span {
@@ -1697,7 +1685,6 @@ export default function App() {
           .why-us { grid-template-columns: 1fr; gap: 40px; }
           .footer-grid { grid-template-columns: 1fr 1fr; }
           .stats-inner { grid-template-columns: repeat(2, 1fr); }
-          .hero-logo-large { width: 200px; height: 200px; }
         }
 
         @media (max-width: 600px) {
@@ -1718,12 +1705,8 @@ export default function App() {
       {/* HEADER */}
       <header>
         <div className="header-inner">
-          <a className="logo-area" onClick={(e) => { e.preventDefault(); navigate('home'); }}>
-            <img 
-              className="logo-img" 
-              src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" 
-              alt="Kia Fashion Logo" 
-            />
+          <a className="logo-area" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('home'); }}>
+            <div className="css-logo">KF</div>
             <div className="logo-text">
               <span className="brand-name">Kia Fashion</span>
               <span className="tagline">By Renu Bhatia</span>
@@ -1731,12 +1714,12 @@ export default function App() {
           </a>
 
           <nav>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Sarees</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Salwar Suits</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Lehengas</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Kurtis</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Collections</a>
-            <a href="#" className="sale" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Sale</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Sarees</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Salwar Suits</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Lehengas</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('cotton-sarees'); }}>Kurtis</a>
+            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Collections</a>
+            <a href="#" className="sale" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Sale</a>
           </nav>
 
           <div className="header-icons">
@@ -1768,7 +1751,7 @@ export default function App() {
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="brand-logo" style={{ cursor: 'pointer' }} onClick={() => navigate('home')}>
-                <img src="/Gemini_Generated_Image_39wqgv39wqgv39wq.png" alt="Kia Fashion" />
+                <div className="css-logo">KF</div>
                 <span>Kia Fashion</span>
               </div>
               <p>Celebrating Indian craftsmanship through exquisite sarees and women's clothing. Curated by Renu Bhatia with love.</p>
@@ -1783,26 +1766,26 @@ export default function App() {
             <div className="footer-col">
               <h4>Collections</h4>
               <ul>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Silk Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Banarasi Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('kanjivaram-sarees'); }}>Kanjivaram Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('bandhani-sarees'); }}>Bandhani Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Cotton Sarees</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Party Wear</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Bridal Collection</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Silk Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Banarasi Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('kanjivaram-sarees'); }}>Kanjivaram Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bandhani-sarees'); }}>Bandhani Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('cotton-sarees'); }}>Cotton Sarees</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Party Wear</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Bridal Collection</a></li>
               </ul>
             </div>
 
             <div className="footer-col">
               <h4>Information</h4>
               <ul>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('about-us'); }}>About Us</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('contact-us'); }}>Contact Us</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('faqs'); }}>FAQs</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('shipping-policy'); }}>Shipping Policy</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('return-policy'); }}>Return Policy</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('privacy-policy'); }}>Privacy Policy</a></li>
-                <li><a onClick={(e) => { e.preventDefault(); navigate('track-order'); }}>Track Order</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('about-us'); }}>About Us</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('contact-us'); }}>Contact Us</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('faqs'); }}>FAQs</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('shipping-policy'); }}>Shipping Policy</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('return-policy'); }}>Return Policy</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('privacy-policy'); }}>Privacy Policy</a></li>
+                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('track-order'); }}>Track Order</a></li>
               </ul>
             </div>
 
@@ -1813,7 +1796,7 @@ export default function App() {
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>WhatsApp:</strong><br />
                 <a href="#" style={{ color: 'var(--gold)' }}>+91 XXXXX XXXXX</a><br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Hours:</strong><br />
-                Mon-Sat, 10AM-7PM<br /><br />
+                Mon to Sat, 10AM to 7PM<br /><br />
                 <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Email:</strong><br />
                 <a href="#" style={{ color: 'var(--gold)' }}>hello@kiafashion.in</a>
               </p>
@@ -1821,7 +1804,7 @@ export default function App() {
           </div>
 
           <div className="footer-bottom">
-            <span>© 2026 Kia Fashion by Renu Bhatia. All rights reserved.</span>
+            <span>© 2026 Kia Fashion by Renu Bhatia. All rights reserved.Skillfully crafted by Yukta Bhatia</span>
             <span>Made with ♡ for the love of Indian textiles</span>
           </div>
         </div>
