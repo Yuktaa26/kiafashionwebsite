@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 // --- INTERFACES & TYPES ---
 interface Product {
@@ -106,24 +106,20 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
             <h1>Drape Yourself in <em>Timeless Elegance</em></h1>
             <p>Curated by Renu Bhatia, celebrating the grace of Indian womanhood through the finest sarees, suits, and traditional wear.</p>
             <div className="hero-btns">
-              <a href="#" className="btn-primary" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Shop Sarees</a>
-              <a href="#" className="btn-outline" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>View All Collections</a>
+              <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Shop Sarees</a>
+              <a href="#" className="btn-outline" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>View All Collections</a>
             </div>
           </div>
           <div className="hero-visual">
             <div className="hero-ornament"></div>
             <div className="hero-logo-container">
+              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: '2px solid var(--gold)', color: 'var(--gold)', fontFamily: 'Cormorant Garamond, serif', fontSize: '120px', background: 'rgba(201, 169, 110, 0.05)', zIndex: 1 }}>KF</div>
               <img 
                 src="/logo.png" 
                 alt="Kia Fashion" 
                 className="hero-logo-large"
-                onError={(e) => { 
-                  e.currentTarget.style.display = 'none'; 
-                  const parent = e.currentTarget.parentElement;
-                  if (parent) {
-                    parent.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;width:320px;height:320px;border-radius:50%;border:2px solid var(--gold);color:var(--gold);font-family:Cormorant Garamond, serif;font-size:120px;animation:float 6s ease-in-out infinite;background:rgba(201, 169, 110, 0.05);">KF</div>';
-                  }
-                }}
+                style={{ position: 'relative', zIndex: 2 }}
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
             </div>
           </div>
@@ -298,7 +294,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
         <div className="inner">
           <h2>The <em>Heritage Saree</em> Collection</h2>
           <p>Paithani · Banarasi · Kanjivaram · Bandhani · Kalamkari · Ikkat</p>
-          <a href="#" className="btn-primary" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Explore Heritage Weaves</a>
+          <a href="#" className="btn-primary" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Explore Heritage Weaves</a>
         </div>
       </div>
 
@@ -404,7 +400,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
               <div className="coll-overlay">
                 <span className="eyebrow">✦ Bridal Season 2025</span>
                 <h3>Wedding & Bridal Sarees</h3>
-                <a href="#" className="coll-link" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Shop Bridal →</a>
+                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Shop Bridal →</a>
               </div>
             </div>
             <div className="coll-card" onClick={() => navigate('party-wear')}>
@@ -415,7 +411,7 @@ function Home({ navigate, addToCart }: { navigate: (page: string) => void, addTo
               <div className="coll-overlay">
                 <span className="eyebrow">✦ Everyday Chic</span>
                 <h3>Office & Daily Wear Sarees</h3>
-                <a href="#" className="coll-link" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Shop Collection →</a>
+                <a href="#" className="coll-link" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Shop Collection →</a>
               </div>
             </div>
           </div>
@@ -1854,7 +1850,7 @@ export default function App() {
       {/* HEADER */}
       <header>
         <div className="header-inner">
-          <a className="logo-area" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('home'); }}>
+          <a className="logo-area" onClick={(e) => { e.preventDefault(); navigate('home'); }}>
             <div className="logo-container">
               <div className="css-logo">KF</div>
               <img 
@@ -1871,16 +1867,16 @@ export default function App() {
           </a>
 
           <nav>
-            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Sarees</a>
-            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Salwar Suits</a>
-            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Lehengas</a>
-            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('cotton-sarees'); }}>Kurtis</a>
-            <a href="#" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Collections</a>
-            <a href="#" className="sale" onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Sale</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Sarees</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Salwar Suits</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Lehengas</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Kurtis</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Collections</a>
+            <a href="#" className="sale" onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Sale</a>
           </nav>
 
           <div className="header-icons">
-            <a onClick={(e: React.MouseEvent) => { e.preventDefault(); setIsCartOpen(true); }} title="Cart">
+            <a onClick={(e) => { e.preventDefault(); setIsCartOpen(true); }} title="Cart">
               🛍
               {cart.length > 0 && <span className="icon-badge">{cart.length}</span>}
             </a>
@@ -1917,26 +1913,26 @@ export default function App() {
             <div className="footer-col">
               <h4>Collections</h4>
               <ul>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('silk-sarees'); }}>Silk Sarees</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Banarasi Sarees</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('kanjivaram-sarees'); }}>Kanjivaram Sarees</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bandhani-sarees'); }}>Bandhani Sarees</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('cotton-sarees'); }}>Cotton Sarees</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('party-wear'); }}>Party Wear</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('bridal-collection'); }}>Bridal Collection</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('silk-sarees'); }}>Silk Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('banarasi-sarees'); }}>Banarasi Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('kanjivaram-sarees'); }}>Kanjivaram Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('bandhani-sarees'); }}>Bandhani Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('cotton-sarees'); }}>Cotton Sarees</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('party-wear'); }}>Party Wear</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('bridal-collection'); }}>Bridal Collection</a></li>
               </ul>
             </div>
 
             <div className="footer-col">
               <h4>Information</h4>
               <ul>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('about-us'); }}>About Us</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('contact-us'); }}>Contact Us</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('faqs'); }}>FAQs</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('shipping-policy'); }}>Shipping Policy</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('return-policy'); }}>Return Policy</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('privacy-policy'); }}>Privacy Policy</a></li>
-                <li><a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('track-order'); }}>Track Order</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('about-us'); }}>About Us</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('contact-us'); }}>Contact Us</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('faqs'); }}>FAQs</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('shipping-policy'); }}>Shipping Policy</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('return-policy'); }}>Return Policy</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('privacy-policy'); }}>Privacy Policy</a></li>
+                <li><a onClick={(e) => { e.preventDefault(); navigate('track-order'); }}>Track Order</a></li>
               </ul>
             </div>
 
