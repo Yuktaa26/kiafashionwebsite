@@ -10,7 +10,7 @@ interface Product {
 
 // --- SUB-COMPONENTS FOR ROUTING ---
 
-function CollectionPage({ title, addToCart, wishlist, toggleWishlist }: { title: string, addToCart: (p: Product) => void, wishlist: string[], toggleWishlist: (id: string) => void }) {
+function CollectionPage({ title, addToCart }: { title: string, addToCart: (p: Product) => void }) {
   return (
     <div className="page-container" style={{ minHeight: '60vh', background: 'var(--cream)', paddingBottom: '70px' }}>
       <div className="page-header">
@@ -24,9 +24,6 @@ function CollectionPage({ title, addToCart, wishlist, toggleWishlist }: { title:
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p1">🥻</div>
-              <div className="product-wishlist" onClick={() => toggleWishlist(`c1-${title}`)} style={{ color: wishlist.includes(`c1-${title}`) ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes(`c1-${title}`) ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 1</h4>
@@ -40,9 +37,6 @@ function CollectionPage({ title, addToCart, wishlist, toggleWishlist }: { title:
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p2">🌸</div>
-              <div className="product-wishlist" onClick={() => toggleWishlist(`c2-${title}`)} style={{ color: wishlist.includes(`c2-${title}`) ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes(`c2-${title}`) ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 2</h4>
@@ -56,9 +50,6 @@ function CollectionPage({ title, addToCart, wishlist, toggleWishlist }: { title:
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p3">🌼</div>
-              <div className="product-wishlist" onClick={() => toggleWishlist(`c3-${title}`)} style={{ color: wishlist.includes(`c3-${title}`) ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes(`c3-${title}`) ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 3</h4>
@@ -72,9 +63,6 @@ function CollectionPage({ title, addToCart, wishlist, toggleWishlist }: { title:
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p4">💜</div>
-              <div className="product-wishlist" onClick={() => toggleWishlist(`c4-${title}`)} style={{ color: wishlist.includes(`c4-${title}`) ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes(`c4-${title}`) ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info">
               <h4>Signature {title} 4</h4>
@@ -106,7 +94,7 @@ function InfoPage({ title, content }: { title: string, content: string }) {
   );
 }
 
-function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (page: string) => void, addToCart: (p: Product) => void, wishlist: string[], toggleWishlist: (id: string) => void }) {
+function Home({ navigate, addToCart }: { navigate: (page: string) => void, addToCart: (p: Product) => void }) {
   return (
     <>
       {/* HERO */}
@@ -240,9 +228,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
             <div className="product-img">
               <div className="product-img-bg p1">🥻</div>
               <div className="product-badge">New</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p1'); }} style={{ color: wishlist.includes('p1') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p1') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('banarasi-sarees')}>
               <h4>Crimson Banarasi Silk Saree</h4>
@@ -260,9 +245,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
             <div className="product-img">
               <div className="product-img-bg p2">🌸</div>
               <div className="product-badge">Bestseller</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p2'); }} style={{ color: wishlist.includes('p2') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p2') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('party-wear')}>
               <h4>Powder Blue Chiffon Saree</h4>
@@ -279,9 +261,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p3">🌼</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p3'); }} style={{ color: wishlist.includes('p3') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p3') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('kanjivaram-sarees')}>
               <h4>Golden Kanjivaram Silk Saree</h4>
@@ -299,9 +278,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
             <div className="product-img">
               <div className="product-img-bg p4">💜</div>
               <div className="product-badge">Sale</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p4'); }} style={{ color: wishlist.includes('p4') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p4') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('party-wear')}>
               <h4>Violet Georgette Party Saree</h4>
@@ -343,9 +319,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
             <div className="product-img">
               <div className="product-img-bg p5">🍃</div>
               <div className="product-badge">Top Rated</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p5'); }} style={{ color: wishlist.includes('p5') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p5') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('cotton-sarees')}>
               <h4>Emerald Green Ikkat Saree</h4>
@@ -362,9 +335,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p6">🔴</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p6'); }} style={{ color: wishlist.includes('p6') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p6') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('bandhani-sarees')}>
               <h4>Bridal Red Bandhani Saree</h4>
@@ -382,9 +352,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
             <div className="product-img">
               <div className="product-img-bg p7">🌺</div>
               <div className="product-badge">Festive Pick</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p7'); }} style={{ color: wishlist.includes('p7') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p7') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('silk-sarees')}>
               <h4>Rani Pink Paithani Saree</h4>
@@ -401,9 +368,6 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
           <div className="product-card">
             <div className="product-img">
               <div className="product-img-bg p8">🌿</div>
-              <div className="product-wishlist" onClick={(e) => { e.stopPropagation(); toggleWishlist('p8'); }} style={{ color: wishlist.includes('p8') ? 'var(--crimson)' : 'inherit' }}>
-                {wishlist.includes('p8') ? '♥' : '♡'}
-              </div>
             </div>
             <div className="product-info" onClick={() => navigate('cotton-sarees')}>
               <h4>Mint Kalamkari Cotton Saree</h4>
@@ -550,10 +514,7 @@ function Home({ navigate, addToCart, wishlist, toggleWishlist }: { navigate: (pa
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
   const [cart, setCart] = useState<Product[]>([]);
-  const [wishlist, setWishlist] = useState<string[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
   const navigate = (page: string) => {
     setCurrentPage(page);
@@ -569,28 +530,20 @@ export default function App() {
     setCart(cart.filter((_, index) => index !== indexToRemove));
   };
 
-  const toggleWishlist = (productId: string) => {
-    if (wishlist.includes(productId)) {
-      setWishlist(wishlist.filter(id => id !== productId));
-    } else {
-      setWishlist([...wishlist, productId]);
-    }
-  };
-
   const cartTotal = cart.reduce((total, item) => total + item.price, 0);
 
   const renderPage = () => {
     switch(currentPage) {
-      case 'home': return <Home navigate={navigate} addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'home': return <Home navigate={navigate} addToCart={addToCart} />;
       
       // Collection Pages
-      case 'silk-sarees': return <CollectionPage title="Silk Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
-      case 'banarasi-sarees': return <CollectionPage title="Banarasi Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
-      case 'kanjivaram-sarees': return <CollectionPage title="Kanjivaram Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
-      case 'bandhani-sarees': return <CollectionPage title="Bandhani Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
-      case 'cotton-sarees': return <CollectionPage title="Cotton Sarees" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
-      case 'party-wear': return <CollectionPage title="Party Wear" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
-      case 'bridal-collection': return <CollectionPage title="Bridal Collection" addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      case 'silk-sarees': return <CollectionPage title="Silk Sarees" addToCart={addToCart} />;
+      case 'banarasi-sarees': return <CollectionPage title="Banarasi Sarees" addToCart={addToCart} />;
+      case 'kanjivaram-sarees': return <CollectionPage title="Kanjivaram Sarees" addToCart={addToCart} />;
+      case 'bandhani-sarees': return <CollectionPage title="Bandhani Sarees" addToCart={addToCart} />;
+      case 'cotton-sarees': return <CollectionPage title="Cotton Sarees" addToCart={addToCart} />;
+      case 'party-wear': return <CollectionPage title="Party Wear" addToCart={addToCart} />;
+      case 'bridal-collection': return <CollectionPage title="Bridal Collection" addToCart={addToCart} />;
 
       // Information Pages
       case 'about-us': 
@@ -608,7 +561,7 @@ export default function App() {
       case 'track-order': 
         return <InfoPage title="Track Your Order" content="To track your recent shipment, please check your email for the tracking link provided by our courier partners upon dispatch. If you cannot find the email, contact our support team with your Order ID and we will provide you with live tracking details immediately." />;
 
-      default: return <Home navigate={navigate} addToCart={addToCart} wishlist={wishlist} toggleWishlist={toggleWishlist} />;
+      default: return <Home navigate={navigate} addToCart={addToCart} />;
     }
   };
 
@@ -913,7 +866,9 @@ export default function App() {
           font-size: 30px;
         }
 
-        .cart-item-details flex: 1;
+        .cart-item-details {
+          flex: 1;
+        }
 
         .cart-item-title {
           font-size: 14px;
@@ -965,26 +920,6 @@ export default function App() {
         }
 
         .checkout-btn:hover { background: var(--dark); }
-
-        .search-modal {
-          background: white;
-          padding: 40px;
-          width: 90%;
-          max-width: 600px;
-          border-radius: 8px;
-          position: relative;
-        }
-
-        .search-input {
-          width: 100%;
-          padding: 20px;
-          font-size: 18px;
-          border: none;
-          border-bottom: 2px solid var(--crimson);
-          font-family: 'Jost', sans-serif;
-          outline: none;
-          background: transparent;
-        }
 
         /* HERO SECTION */
         .hero {
@@ -1384,26 +1319,6 @@ export default function App() {
           text-transform: uppercase;
         }
 
-        .product-wishlist {
-          position: absolute;
-          top: 12px;
-          right: 12px;
-          width: 32px;
-          height: 32px;
-          background: white;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 14px;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-          cursor: pointer;
-          transition: all 0.2s;
-          z-index: 10;
-        }
-
-        .product-wishlist:hover { background: var(--blush); }
-
         .product-info {
           padding: 16px;
         }
@@ -1754,79 +1669,6 @@ export default function App() {
 
         .feature-item:hover p { color: rgba(255,255,255,0.7); }
 
-        /* NEWSLETTER */
-        .newsletter {
-          background: linear-gradient(135deg, var(--crimson), #5C2D36);
-          padding: 70px 30px;
-          text-align: center;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .newsletter::before {
-          content: '✦';
-          position: absolute;
-          font-size: 300px;
-          color: rgba(255,255,255,0.03);
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          pointer-events: none;
-        }
-
-        .newsletter h2 {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 42px;
-          font-weight: 300;
-          color: white;
-          margin-bottom: 12px;
-        }
-
-        .newsletter p {
-          color: rgba(255,255,255,0.7);
-          font-size: 15px;
-          margin-bottom: 30px;
-        }
-
-        .newsletter-form {
-          display: flex;
-          max-width: 480px;
-          margin: 0 auto;
-          gap: 0;
-        }
-
-        .newsletter-form input {
-          flex: 1;
-          padding: 16px 20px;
-          border: none;
-          background: rgba(255,255,255,0.15);
-          color: white;
-          font-family: 'Jost', sans-serif;
-          font-size: 14px;
-          outline: none;
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
-
-        .newsletter-form button {
-          background: var(--gold);
-          color: var(--dark);
-          border: none;
-          padding: 16px 28px;
-          font-family: 'Jost', sans-serif;
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: 2px;
-          text-transform: uppercase;
-          cursor: pointer;
-          transition: all 0.3s;
-          white-space: nowrap;
-        }
-
-        .newsletter-form button:hover { background: white; }
-
         /* FOOTER */
         footer {
           background: var(--dark);
@@ -1964,7 +1806,6 @@ export default function App() {
           .footer-grid { grid-template-columns: 1fr; }
           .banner-strip h2 { font-size: 32px; }
           .section-header h2 { font-size: 30px; }
-          .newsletter-form { flex-direction: column; }
         }
       ` }} />
 
@@ -2005,28 +1846,6 @@ export default function App() {
         </div>
       )}
 
-      {isSearchOpen && (
-        <div className="modal-overlay" onClick={() => setIsSearchOpen(false)}>
-          <div className="search-modal" onClick={(e) => e.stopPropagation()}>
-            <h2 style={{ fontFamily: 'Cormorant Garamond', marginBottom: '20px', color: 'var(--crimson)' }}>Search Collection</h2>
-            <input 
-              type="text" 
-              className="search-input" 
-              placeholder="Search for Sarees, Suits, Lehengas..." 
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              autoFocus
-            />
-            {searchQuery && (
-              <p style={{ marginTop: '20px', color: 'var(--text-muted)' }}>
-                Showing results for "{searchQuery}". <span style={{ color: 'var(--crimson)' }}>No exact matches found.</span>
-              </p>
-            )}
-            <button className="close-btn" style={{ position: 'absolute', top: '10px', right: '20px' }} onClick={() => setIsSearchOpen(false)}>×</button>
-          </div>
-        </div>
-      )}
-
       {/* ANNOUNCEMENT BAR */}
       <div className="announcement-bar">
         ✦ Free Shipping on Orders Above ₹999 &nbsp;|&nbsp; New Arrivals: Kanjivaram & Banarasi Collection ✦
@@ -2061,11 +1880,6 @@ export default function App() {
           </nav>
 
           <div className="header-icons">
-            <a onClick={(e: React.MouseEvent) => { e.preventDefault(); setIsSearchOpen(true); }} title="Search">🔍</a>
-            <a onClick={(e: React.MouseEvent) => { e.preventDefault(); navigate('home'); }} title="Wishlist">
-              ♡
-              {wishlist.length > 0 && <span className="icon-badge">{wishlist.length}</span>}
-            </a>
             <a onClick={(e: React.MouseEvent) => { e.preventDefault(); setIsCartOpen(true); }} title="Cart">
               🛍
               {cart.length > 0 && <span className="icon-badge">{cart.length}</span>}
@@ -2078,16 +1892,6 @@ export default function App() {
       <main>
         {renderPage()}
       </main>
-
-      {/* NEWSLETTER (Always Visible) */}
-      <section className="newsletter">
-        <h2>Stay in the Loop</h2>
-        <p>Get exclusive offers, new arrival alerts & styling tips from Renu straight to your inbox.</p>
-        <div className="newsletter-form">
-          <input type="email" placeholder="Enter your email address" />
-          <button>Subscribe</button>
-        </div>
-      </section>
 
       {/* FOOTER */}
       <footer>
